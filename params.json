@@ -1,0 +1,8 @@
+{
+  "name": "sec_try",
+  "train_plan": [
+    {"players": [], "num_of_games": 5, "des": "no_players"},
+    {"players": ["r"], "num_of_games": 5, "des": "one_random"},
+    {"players": ["old"], "num_of_games": 5, "des": "one_old"}
+  ]
+}
