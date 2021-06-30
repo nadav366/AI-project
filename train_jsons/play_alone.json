@@ -1,0 +1,6 @@
+{
+  "name": "play_alone",
+  "train_plan": [
+    {"players": [], "num_of_games": 1000, "des": "no_players"}
+  ]
+}

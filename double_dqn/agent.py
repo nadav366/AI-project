@@ -11,7 +11,6 @@ from double_dqn.experience_replay import ExperienceReplay
 from game.training_environment import TrainingEnv
 from evaluation import fight
 
-
 class DQNAgent:
     def __init__(self, env, model,
                  net_update_rate: int = 25,

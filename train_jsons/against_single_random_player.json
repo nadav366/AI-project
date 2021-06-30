@@ -1,0 +1,6 @@
+{
+  "name": "against_single_random_player",
+  "train_plan": [
+    {"players": ["r"], "num_of_games": 1000, "des": "play_against_single_player"}
+  ]
+}
