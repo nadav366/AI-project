@@ -11,12 +11,6 @@ from tensorflow.keras.layers import Dense, Input, Conv2D, Dropout, Flatten
 from double_dqn.agent import DQNAgent
 from game.training_environment import TrainingEnv
 
-train_plan = [
-    ([], 100, 'name')
-]
-weight_path = '.tmp'
-training_data_path = '.tmp'
-
 
 def get_model():
     n_actions = 3
@@ -37,7 +31,7 @@ if __name__ == '__main__':
     with open(sys.argv[1], 'r') as f:
         params = json.load(f)
     time = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
-    dir_train = os.path.join('.', f"{params['name']}_{time}")
+    dir_train = os.path.join('run_trains', f"{params['name']}_{time}")
     os.makedirs(dir_train)
 
     pd.DataFrame().to_csv(os.path.join(dir_train, 'random.csv'))

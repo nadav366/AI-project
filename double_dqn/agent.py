@@ -59,7 +59,7 @@ class DQNAgent:
 
     def train(self, episodes: int, train_dir, step_name,
               max_actions: int = None, batch_size: int = 64,
-              checkpoint_rate=1, exploration_rate=None):
+              checkpoint_rate=200, exploration_rate=None):
         """
         Runs a training session for the agent
         :param episodes: number of episodes to train.
@@ -111,7 +111,7 @@ class DQNAgent:
                     average_num_actions_over_100.append(np.mean(num_actions[-100:]))
                 if (i % checkpoint_rate) == checkpoint_rate - 1:
                     save_path = self.save_data_of_cp(average_num_actions_over_100, num_actions, step_name, train_dir, i)
-                    if (i % checkpoint_rate) == checkpoint_rate - 1:
+                    if (i % checkpoint_rate*4) == checkpoint_rate*4 - 1:
                         self.fights(i, save_path, step_name, train_dir)
 
             # Update exploration rate
