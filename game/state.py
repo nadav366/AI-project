@@ -12,9 +12,9 @@ from static.settings import *
 class State:
     count = 0
 
-    def __init__(self, shape, positions, angles, colors):
+    def __init__(self, shape, positions, angles, colors, players):
         self.margin = 6
-        self.extract_features = False
+        self.extract_features = [player.extract_features for player in players]
         shape_3d = shape[0] + (self.margin * 2), shape[1] + (self.margin * 2), shape[2]
         shape_2d = (shape[0], shape[1])
         self._rgb_board = np.ones(shape_3d) * WHITE
@@ -73,7 +73,7 @@ class State:
         self._board[: ARENA_HEIGHT, : ARENA_WIDTH] = BLACK_2D
 
     def adjust_to_drl_player(self, player_id):
-        if self.extract_features:
+        if self.extract_features[player_id]:
             max_distance = 350
             num_angles = 25
             features_per_player = 2
@@ -106,10 +106,7 @@ class State:
             y_top = y_head_new - crop_size_h_above
             y_bot = y_head_new + crop_size_h_under
 
-            croped_state = rotated_bord[
-                           y_top:y_bot,
-                           x_left:x_right
-                           ]
+            croped_state = rotated_bord[y_top:y_bot,x_left:x_right]
 
             if False:
                 fig = plt.figure(figsize=(6, 3))
@@ -117,7 +114,7 @@ class State:
                 ax1.imshow(rotated_bord, cmap='gray')
                 ax1.scatter(x_head_new, y_head_new)
                 ax2.imshow(croped_state, cmap='gray')
-            plt.show()
+                plt.show()
             return np.expand_dims(croped_state, axis=-1)
 
     @abc.abstractmethod
@@ -135,6 +132,7 @@ class State:
         new_state._positions = copy.deepcopy(other.get_all_positions())
         new_state.alive = copy.copy(other.alive)
         new_state._angles = copy.copy(other.get_all_angles())
+        new_state.extract_features = copy.copy(other.extract_features)
         return new_state
 
     def draw_circle(self, color_2d, color, center, radius):

@@ -1,5 +1,5 @@
 import json
-
+import tensorflow as tf
 import pygame
 from tensorflow.keras.models import model_from_json
 
@@ -22,11 +22,14 @@ class PlayerFactory:
             return RegularHumanPlayer(id, game, ARROWS_RIGHT, ARROWS_LEFT)
         elif player_type == 'hw':
             return RegularHumanPlayer(id, game, WASD_RIGHT, WASD_LEFT)
-        elif player_type == 'd':
+        elif player_type == 'old':
             with open(FC_ARCHITECTURE_PATH, 'r') as json_file:
                 config = json.load(json_file)
                 model = model_from_json(config)
                 model.load_weights(FC_WEIGHT_PATH).expect_partial()
-            return DRLPlayer(id, game, model)
+            return DRLPlayer(id, game, model, extract_features=True)
         elif player_type == 'r':
             return RandomPlayer(id, game)
+        else:
+            model = tf.keras.models.load_model(player_type)
+            return DRLPlayer(id, game, model)

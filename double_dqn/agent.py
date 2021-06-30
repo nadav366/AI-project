@@ -1,11 +1,15 @@
 import os
+
 import numpy as np
 import pandas as pd
+from matplotlib import pyplot as plt
+from tensorflow.keras.models import load_model, model_from_json
 from tqdm import tqdm
+
 from double_dqn.double_dqn import DoubleDQN
 from double_dqn.experience_replay import ExperienceReplay
-from tensorflow.keras.models import load_model, model_from_json
-from matplotlib import pyplot as plt
+from game.training_environment import TrainingEnv
+from evaluation import fight
 
 
 class DQNAgent:
@@ -53,8 +57,9 @@ class DQNAgent:
         batch = self.exp_rep.get_batch(batch_size)
         self.net.fit(*batch)
 
-    def train(self, episodes: int, weight_path, checkpoint_path, max_actions: int = None, batch_size: int = 64,
-              checkpoint_rate=100):
+    def train(self, episodes: int, train_dir, step_name,
+              max_actions: int = None, batch_size: int = 64,
+              checkpoint_rate=1, exploration_rate=None):
         """
         Runs a training session for the agent
         :param episodes: number of episodes to train.
@@ -69,19 +74,17 @@ class DQNAgent:
                                       'agent\'s methods \'get_state_shape\' and \'get_action_shape\'')
 
         # set hyper parameters
-        exploration_rate = self.exploration_rate
-        total_rewards, average_reward_over_100 = [], []
+        exploration_rate = self.exploration_rate if exploration_rate is None else exploration_rate
+        total_rewards, average_num_actions_over_100 = [], []
         num_actions = []
         # start training
         for i in tqdm(range(episodes)):
             self.env.reset()  # Reset the environment for a new episode
             state = self.env.get_state()  # Get starting state
-            step = 0
             ep_reward = 0
             steps_buffer = []
-            while max_actions is None or step <= max_actions:
+            while max_actions is None or len(steps_buffer) <= max_actions:
 
-                step += 1
                 action = self.get_action(state, exploration_rate)
                 next_state, reward = self.env.step(action)
                 steps_buffer.append((state, action, next_state))
@@ -92,7 +95,7 @@ class DQNAgent:
 
             for step, tup in enumerate(steps_buffer):
                 # Add experience to memory
-                self.exp_rep.add(tup[0], tup[1], ep_reward-step, tup[2], self.env.get_legal_actions(state))
+                self.exp_rep.add(tup[0], tup[1], ep_reward - step, tup[2], self.env.get_legal_actions(state))
                 self.update_net(batch_size)  # Optimize the DoubleQ-net
                 if (step % self.net_updating_rate) == 0:
                     # update target network
@@ -100,30 +103,46 @@ class DQNAgent:
 
             # Update total_rewards and num_actions to keep track of progress
             total_rewards.append(ep_reward)
-            num_actions.append(step)
+            num_actions.append(len(steps_buffer))
             # Update target network at the end of the episode
             self.net.align_target_model()
             if self.exp_rep.get_num() > batch_size:
                 if (i % 50) == 0 and i >= 100:
-                    average_reward_over_100.append(np.mean(total_rewards[-100:]))
-                if (i % checkpoint_rate) == checkpoint_rate-1:
-                    self.save_weights(weight_path + os.path.sep + f'episode_{i}_weights')
-                    with open(checkpoint_path + os.path.sep + 'total_rewards.csv', 'w') as reward_file:
-                        rewards = pd.DataFrame(total_rewards)
-                        rewards.to_csv(reward_file)
-                    with open(checkpoint_path + os.path.sep + 'exploration_rate', 'w') as exp_rate:
-                        exp_rate.writelines([str(exploration_rate)])
-                    plt.plot(np.arange(len(average_reward_over_100)), average_reward_over_100)
-                    plt.title('average reward over last 100 episodes')
-                    plt.xticks = 10 + (np.arange(len(average_reward_over_100)) * 5)
-                    plt.xlabel('episodes / 10')
-                    plt.ylabel('average reward over last 100 episodes')
-                    plt.savefig(checkpoint_path + 'average_100')
+                    average_num_actions_over_100.append(np.mean(num_actions[-100:]))
+                if (i % checkpoint_rate) == checkpoint_rate - 1:
+                    save_path = self.save_data_of_cp(average_num_actions_over_100, num_actions, step_name, train_dir, i)
+                    if (i % checkpoint_rate) == checkpoint_rate - 1:
+                        self.fights(i, save_path, step_name, train_dir)
 
             # Update exploration rate
             exploration_rate = max(0.1, 0.01 + (exploration_rate - 0.01) * np.exp(-self.exploration_decay * (i + 1)))
         self.exploration_rate = exploration_rate
-        return total_rewards, num_actions
+        return num_actions, exploration_rate
+
+    def save_data_of_cp(self, average_num_actions_over_100, num_actions, step_name, train_dir, i):
+        save_path = os.path.join(train_dir, step_name, f'model_{i}')
+        self.save_model(save_path)
+        pd.DataFrame(num_actions).to_csv(os.path.join(train_dir, step_name, f'steps_{i}.csv'))
+        plt.plot(np.arange(len(average_num_actions_over_100)), average_num_actions_over_100)
+        plt.title('average reward over last 100 episodes')
+        plt.xticks = 10 + (np.arange(len(average_num_actions_over_100)) * 5)
+        plt.xlabel('episodes / 10')
+        plt.ylabel('average reward over last 100 episodes')
+        plt.savefig(os.path.join(train_dir, step_name, f'reward_{i}.png'))
+        return save_path
+
+    def fights(self, i, save_path, step_name, train_dir):
+        res_rand = fight([save_path, 'r'], num_of_fights=100)
+        rand_csv_path = os.path.join(train_dir, 'random.csv')
+        df = pd.read_csv(rand_csv_path)
+        df = df.append({'name': step_name, 'i': i, 'res': res_rand[0], 'rand_res': res_rand[1]}, ignore_index=True)
+        df.to_csv(rand_csv_path)
+
+        old_rand = fight([save_path, 'old'], num_of_fights=100)
+        rand_csv_path = os.path.join(train_dir, 'old.csv')
+        df = pd.read_csv(rand_csv_path)
+        df = df.append({'name': step_name, 'i': i, 'old': old_rand[0], 'rand_old': old_rand[1]}, ignore_index=True)
+        df.to_csv(rand_csv_path)
 
     def get_state_shape(self):
         return self.state_shape
@@ -163,3 +182,6 @@ class DQNAgent:
     def from_json(self, json_config):
         model = model_from_json(json_config)
         self.set_model(model)
+
+
+

@@ -12,6 +12,7 @@ class Player(object):
     def __init__(self, player_id, game):
         self.id = player_id
         self.game = game
+        self.extract_features = False
 
     @abc.abstractmethod
     def get_action(self, state):

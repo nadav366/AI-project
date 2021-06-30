@@ -22,7 +22,7 @@ class AchtungEnv(object):
         self.draw_status = [True for _ in range(len(self.players))]
         self.angles = self.initialize_angles()
         self.positions = self.initialize_positions()
-        self.state = State(ARENA_SHAPE, self.positions, self.angles, self.colors)
+        self.state = State(ARENA_SHAPE, self.positions, self.angles, self.colors, self.players)
         self.actions = [STRAIGHT for _ in range(len(self.players))]
         self.draw_counters = self.initialize_draw_counters()
         self.no_draw_counters = self.initialize_draw_counters()

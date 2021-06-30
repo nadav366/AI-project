@@ -1,8 +1,12 @@
-import pandas as pd
+import datetime
+import json
+import os
+import sys
+
 import numpy as np
+import pandas as pd
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Dense, Input, Conv2D, Dropout, Flatten
-from matplotlib import pyplot as plt
 
 from double_dqn.agent import DQNAgent
 from game.training_environment import TrainingEnv
@@ -30,12 +34,31 @@ def get_model():
 
 
 if __name__ == '__main__':
-    # run_name =
+    with open(sys.argv[1], 'r') as f:
+        params = json.load(f)
+    time = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
+    dir_train = os.path.join('.', f"{params['name']}_{time}")
+    os.makedirs(dir_train)
+
+    pd.DataFrame().to_csv(os.path.join(dir_train, 'random.csv'))
+    pd.DataFrame().to_csv(os.path.join(dir_train, 'old.csv'))
+
     model = get_model()
-    for players, num_of_eps, name in train_plan:
-        players = ['r'] + players
+    exploration_rate = None
+    df = pd.DataFrame()
+    for step_params in params['train_plan']:
+        print(f'start {step_params["des"]}')
+        players = ['r'] + step_params['players']
         game = TrainingEnv(players, training_mode=True)
         trained_agent = DQNAgent(game, model)
-        rewards, num_actions = trained_agent.train(num_of_eps, weight_path, training_data_path, None, 64)
-        pd.DataFrame(rewards).to_csv('rewards.csv')
-        model.save('model')
+        num_actions, exploration_rate = trained_agent.train(step_params['num_of_games'], dir_train,
+                                                            step_name=step_params['des'],
+                                                            exploration_rate=exploration_rate)
+        df = df.append(pd.DataFrame({
+            'name': step_params['des'],
+            'num_actions': num_actions,
+            'step': np.arange(len(num_actions))}), ignore_index=True)
+        df.to_csv(os.path.join(dir_train, 'df_all.csv'))
+        model.save(os.path.join(dir_train, f"{step_params['des']}_model"))
+
+    model.save(os.path.join(dir_train, 'final_model'))

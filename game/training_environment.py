@@ -5,10 +5,6 @@ from game.achtung_environment import AchtungEnv
 from game.players.drl_player import DRLPlayer
 
 
-# Uncomment for a game with bulbs
-# from players.bulb import Bulb, SpeedBulb, SlowBulb, InvertedBulb, ClearBulb
-
-
 class TrainingEnv(AchtungEnv):
     def __init__(self, players, training_mode=False, with_positions=True):
         AchtungEnv.__init__(self, training_mode)
@@ -36,3 +32,13 @@ class TrainingEnv(AchtungEnv):
         for _ in range(self.action_sampling_rate):
             self.tick()
         return self.get_state(player_id), 1
+
+    def loop(self):
+        while True:
+            self.counter += 1
+            self.update_actions()
+            self.tick()
+            if np.sum(self.state.alive) == 1:
+                winner = np.where(self.state.alive)[0][0]
+                return winner
+
