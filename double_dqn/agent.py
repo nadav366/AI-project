@@ -110,8 +110,7 @@ class DQNAgent:
                     average_num_actions_over_100.append(np.mean(num_actions[-100:]))
                 if (i % checkpoint_rate) == checkpoint_rate - 1:
                     save_path = self.save_data_of_cp(average_num_actions_over_100, num_actions, step_name, train_dir, i)
-                    if (i % checkpoint_rate*4) == checkpoint_rate*4 - 1:
-                        self.fights(i, save_path, step_name, train_dir)
+                    self.fights(i, save_path, step_name, train_dir)
 
             # Update exploration rate
             exploration_rate = max(0.1, 0.01 + (exploration_rate - 0.01) * np.exp(-self.exploration_decay * (i + 1)))
@@ -122,26 +121,27 @@ class DQNAgent:
         save_path = os.path.join(train_dir, step_name, f'model_{i}')
         self.save_model(save_path)
         pd.DataFrame(num_actions).to_csv(os.path.join(train_dir, step_name, f'steps_{i}.csv'))
-        plt.plot(np.arange(len(average_num_actions_over_100)), average_num_actions_over_100)
-        plt.title('average reward over last 100 episodes')
-        plt.xticks = 10 + (np.arange(len(average_num_actions_over_100)) * 5)
-        plt.xlabel('episodes / 10')
-        plt.ylabel('average reward over last 100 episodes')
-        plt.savefig(os.path.join(train_dir, step_name, f'reward_{i}.png'))
+        # plt.plot(np.arange(len(average_num_actions_over_100)), average_num_actions_over_100)
+        # plt.title('average reward over last 100 episodes')
+        # plt.xticks = 10 + (np.arange(len(average_num_actions_over_100)) * 5)
+        # plt.xlabel('episodes / 10')
+        # plt.ylabel('average reward over last 100 episodes')
+        # plt.savefig(os.path.join(train_dir, step_name, f'reward_{i}.png'))
         return save_path
 
     def fights(self, i, save_path, step_name, train_dir):
         res_rand = fight([save_path, 'r'], num_of_fights=100)
         rand_csv_path = os.path.join(train_dir, 'random.csv')
         df = pd.read_csv(rand_csv_path)
-        df = df.append({'name': step_name, 'i': i, 'res': res_rand[0], 'rand_res': res_rand[1]}, ignore_index=True)
+        df = df.append({'name': step_name, 'i': i, 'me': res_rand[0], 'rand_res': res_rand[1]}, ignore_index=True)
         df.to_csv(rand_csv_path)
 
         old_rand = fight([save_path, 'old'], num_of_fights=100)
         rand_csv_path = os.path.join(train_dir, 'old.csv')
         df = pd.read_csv(rand_csv_path)
-        df = df.append({'name': step_name, 'i': i, 'old': old_rand[0], 'rand_old': old_rand[1]}, ignore_index=True)
-        df.to_csv(rand_csv_path)
+        # df = df.append({'name': step_name, 'i': i, 'old': old_rand[0], 'rand_old': old_rand[1]}, ignore_index=True)
+        df = df.append({'name': step_name, 'i': i, 'me': old_rand[0], 'old_player': old_rand[1]}, ignore_index=True)
+        df.to_csv(rand_csv_path, index=False)
 
     def get_state_shape(self):
         return self.state_shape

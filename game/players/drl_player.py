@@ -10,7 +10,7 @@ class DRLPlayer(Player):
         self._net = model
         self.predictions = 0
         self.total_time = 0
-        self.extract_features=extract_features
+        self.extract_features = extract_features
 
     def get_action(self, state):
         self.predictions += 1

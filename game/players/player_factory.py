@@ -31,5 +31,7 @@ class PlayerFactory:
         elif player_type == 'r':
             return RandomPlayer(id, game)
         else:
+            if player_type == 'd':
+                player_type = "C:\\Users\\NADAV\\.PyCharm2018.1\\AI\\project\\run_dirs\\play_alone_030721_222033\\final_model"
             model = tf.keras.models.load_model(player_type)
             return DRLPlayer(id, game, model)
