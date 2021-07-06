@@ -38,7 +38,7 @@ if __name__ == '__main__':
     params = SimpleNamespace(**params)
     time = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
     dir_train = os.path.join('run_trains', f"{params.name}_{time}")
-    os.makedirs(dir_train)
+    os.makedirs(dir_train, )
 
     model = get_model(params)
     exploration_rate = None

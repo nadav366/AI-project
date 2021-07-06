@@ -1,14 +1,14 @@
 import os
-
+import sys
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RUN_DIRS_ROOT = os.path.join(BASE_DIR, 'run_dirs')
-RANDOM_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/random.csv')
-ALL_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/df_all.csv')
-OLD_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/old.csv')
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# RUN_DIRS_ROOT = os.path.join(BASE_DIR, 'run_dirs')
+# RANDOM_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/random.csv')
+# ALL_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/df_all.csv')
+# OLD_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/old.csv')
 # RANDOM_CSV = 'C://Users/guykatz/PycharmProjects/AchtungDeKurve/AI-project/run_dirs/play_alone_030721_222033/random.csv'
 
 
@@ -29,8 +29,8 @@ OLD_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/old.csv')
 #     plot_graph_for_all_train(new_df1)
 
 
-def plot_graph_for_all_train():
-    df = pd.read_csv(ALL_CSV, sep=',')
+def plot_graph_for_all_train(all_df_path):
+    df = pd.read_csv(all_df_path)
     df.reset_index(drop=True, inplace=True)
     groups = df.groupby('step_index')
     num_actions_arr = groups.num_actions.apply(list)
@@ -53,8 +53,8 @@ def plot_graph_for_all_train():
     plt.show()
 
 
-def plot_graph_for_comparing():
-    df = pd.read_csv(OLD_CSV, sep=',')
+def plot_graph_for_comparing(compare_path):
+    df = pd.read_csv(compare_path, sep=',')
     df.reset_index(drop=True, inplace=True)
     iter_num, layer_name, player_1, player_2, index = df.columns.tolist()
 
@@ -83,8 +83,17 @@ def plot_graph_for_comparing():
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.show()
 
+
+def main(root_dir):
+    for run_dir in os.listdir(root_dir):
+        run_path = os.path.join(root_dir, run_dir)
+        plot_graph_for_all_train(os.path.join(run_path, 'df_all.csv'))
+        plot_graph_for_comparing(os.path.join(run_path, 'random.csv'))
+        plot_graph_for_comparing(os.path.join(run_path, 'old.csv'))
+
+
+
 if __name__ == '__main__':
-    # main()
-    # read_all_file()
-    plot_graph_for_comparing()
+    main(sys.argv[1])
+
 
