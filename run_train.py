@@ -43,7 +43,7 @@ if __name__ == '__main__':
     model = get_model(params)
     exploration_rate = None
     df = pd.DataFrame()
-    for step_params in params.train_plan:
+    for i, step_params in enumerate(params.train_plan):
         step_params = SimpleNamespace(**step_params)
         print(f'start {step_params.des}')
         players = ['r'] + step_params.players
@@ -57,7 +57,8 @@ if __name__ == '__main__':
         df = df.append(pd.DataFrame({
             'name': step_params.des,
             'num_actions': num_actions,
-            'step': np.arange(len(num_actions))}), ignore_index=True)
+            'step': np.arange(len(num_actions)),
+            'step_index': i}), ignore_index=True)
         df.to_csv(os.path.join(dir_train, 'df_all.csv'))
         model.save(os.path.join(dir_train, f"{step_params.des}_model"))
 

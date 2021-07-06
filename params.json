@@ -1,13 +1,11 @@
 {
-  "name": "sec_try",
-  "conv_filters": [16,32,32],
-  "fc_sizes": [128,64,32],
+  "name": "small_arena",
+  "conv_filters": [16,32],
+  "fc_sizes": [128,64],
   "dropout": 0.4,
   "exploration_decay": 1e-6,
-  "state_size": 64,
+  "state_size": 32,
   "train_plan": [
-    {"players": [], "num_of_games": 5,"arena_size": 200, "des": "no_players"},
-    {"players": ["r"], "num_of_games": 5,"arena_size": 300, "des": "one_random"},
-    {"players": ["old"], "num_of_games": 5,"arena_size": 400, "des": "one_old"}
+    {"players": [], "num_of_games": 2500,"arena_size": 200, "des": "no_players_200"}
   ]
 }
