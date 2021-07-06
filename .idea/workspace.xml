@@ -3,16 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a292041c-b5db-421e-a187-1cb45b4f5adc" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/double_dqn/agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/players/drl_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/drl_player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/achtung_environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/achtung_environment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/training_environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/training_environment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/params.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/against_single_old_player.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/against_single_old_player.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/against_single_random_player.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/against_single_random_player.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/play_alone.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/play_alone.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/seq_no_players_random.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/seq_no_players_random.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/seq_no_players_random_old.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/seq_no_players_random_old.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/static/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,16 +19,16 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/project$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1625553721595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$run_train.coverage" NAME="run_train Coverage Results" MODIFIED="1625557305412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1625560046899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1625562293962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$run_train.coverage" NAME="run_train Coverage Results" MODIFIED="1625564626255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="agent.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1410">
-              <caret line="88" column="48" lean-forward="true" selection-start-line="88" selection-start-column="48" selection-end-line="88" selection-end-column="48" />
+            <state relative-caret-position="196">
+              <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -43,8 +39,8 @@
       <file leaf-file-name="params.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/params.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+            <state relative-caret-position="176">
+              <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -52,8 +48,8 @@
       <file leaf-file-name="run_train.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="61" column="56" lean-forward="true" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
+            <state relative-caret-position="280">
+              <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -61,14 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="drl_player.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/players/drl_player.py">
+      <file leaf-file-name="against_single_old_player.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train_jsons/against_single_old_player.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="132">
+              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -76,8 +69,8 @@
       <file leaf-file-name="training_environment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game/training_environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+            <state relative-caret-position="198">
+              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
               <folding>
                 <element signature="e#16#34#0" expanded="true" />
               </folding>
@@ -88,29 +81,17 @@
       <file leaf-file-name="achtung_environment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game/achtung_environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3056">
-              <caret line="241" column="8" selection-start-line="241" selection-start-column="8" selection-end-line="241" selection-end-column="8" />
+            <state relative-caret-position="330">
+              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="experience_replay.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/double_dqn/experience_replay.py">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="45" column="85" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="seq_no_players_random_old.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_jsons/seq_no_players_random_old.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="240">
+              <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="24" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -118,18 +99,13 @@
       <file leaf-file-name="state.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game/state.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1384">
-              <caret line="101" column="69" lean-forward="true" selection-start-line="101" selection-start-column="69" selection-end-line="101" selection-end-column="69" />
+            <state relative-caret-position="126">
+              <caret line="73" column="50" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="65" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dqn_env.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/double_dqn/dqn_env.py">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -152,6 +128,9 @@
       <find>max</find>
       <find>get_state(</find>
       <find>input</find>
+      <find>ARENA_WIDTH</find>
+      <find>ARENA_HEIGHT</find>
+      <find>arena_size</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,10 +142,8 @@
         <option value="$PROJECT_DIR$/game/players/player.py" />
         <option value="$PROJECT_DIR$/train_in_gpu.sh" />
         <option value="$PROJECT_DIR$/game/players/player_factory.py" />
-        <option value="$PROJECT_DIR$/game/achtung_environment.py" />
         <option value="$PROJECT_DIR$/evaluation.py" />
         <option value="$PROJECT_DIR$/drl_trainer.py" />
-        <option value="$PROJECT_DIR$/game/training_environment.py" />
         <option value="$PROJECT_DIR$/double_dqn/experience_replay.py" />
         <option value="$PROJECT_DIR$/train_jsons/against_single_old_player.json" />
         <option value="$PROJECT_DIR$/train_jsons/against_single_random_player.json" />
@@ -174,10 +151,13 @@
         <option value="$PROJECT_DIR$/train_jsons/seq_no_players_random.json" />
         <option value="$PROJECT_DIR$/train_jsons/seq_no_players_random_old.json" />
         <option value="$PROJECT_DIR$/game/players/drl_player.py" />
-        <option value="$PROJECT_DIR$/game/state.py" />
-        <option value="$PROJECT_DIR$/run_train.py" />
         <option value="$PROJECT_DIR$/double_dqn/agent.py" />
+        <option value="$PROJECT_DIR$/run_train.py" />
+        <option value="$PROJECT_DIR$/game/training_environment.py" />
+        <option value="$PROJECT_DIR$/game/achtung_environment.py" />
+        <option value="$PROJECT_DIR$/static/settings.py" />
         <option value="$PROJECT_DIR$/params.json" />
+        <option value="$PROJECT_DIR$/game/state.py" />
       </list>
     </option>
   </component>
@@ -191,10 +171,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1911" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="2870" />
+    <option name="y" value="-10" />
+    <option name="width" value="979" />
+    <option name="height" value="1049" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -219,6 +199,11 @@
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
@@ -250,7 +235,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run_game">
+  <component name="RunManager" selected="Python.run_train">
     <configuration name="evaluation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -315,8 +300,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run_game" />
         <item itemvalue="Python.run_train" />
+        <item itemvalue="Python.run_game" />
         <item itemvalue="Python.evaluation" />
       </list>
     </recent_temporary>
@@ -395,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625558788343</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="change rewards system">
+      <created>1625561272180</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1625561272180</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -407,16 +399,16 @@
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.15384616" />
-      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" visible="true" weight="0.2820513" />
+      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" weight="0.0" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3291592" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18657719" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18657719" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32621083" />
       <window_info anchor="right" id="SciView" order="5" weight="0.85167783" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.17378917" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.35185185" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -464,7 +456,8 @@
     <MESSAGE value="add old model" />
     <MESSAGE value="add model params to json" />
     <MESSAGE value="add state param to json" />
-    <option name="LAST_COMMIT_MESSAGE" value="add state param to json" />
+    <MESSAGE value="change rewards system" />
+    <option name="LAST_COMMIT_MESSAGE" value="change rewards system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -479,8 +472,13 @@
           <line>26</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/game/state.py</url>
+          <line>73</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -599,13 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/evaluation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -637,38 +628,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/against_single_random_player.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/play_alone.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/seq_no_players_random.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game/players/regular_player.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/against_single_old_player.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -695,71 +658,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/seq_no_players_random_old.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/training_environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
-          <folding>
-            <element signature="e#16#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/achtung_environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3056">
-          <caret line="241" column="8" selection-start-line="241" selection-start-column="8" selection-end-line="241" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game/players/drl_player.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
-          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_train.py">
+    <entry file="file://$PROJECT_DIR$/train_jsons/against_single_old_player.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="61" column="56" lean-forward="true" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="132">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_jsons/against_single_random_player.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_jsons/seq_no_players_random.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_jsons/seq_no_players_random_old.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_jsons/play_alone.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="88" column="48" lean-forward="true" selection-start-line="88" selection-start-column="48" selection-end-line="88" selection-end-column="48" />
+        <state relative-caret-position="196">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/run_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/training_environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <folding>
+            <element signature="e#16#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/params.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="176">
+          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/achtung_environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="24" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game/state.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1384">
-          <caret line="101" column="69" lean-forward="true" selection-start-line="101" selection-start-column="69" selection-end-line="101" selection-end-column="69" />
+        <state relative-caret-position="126">
+          <caret line="73" column="50" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="65" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

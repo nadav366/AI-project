@@ -6,8 +6,8 @@
   "exploration_decay": 1e-6,
   "state_size": 64,
   "train_plan": [
-    {"players": [], "num_of_games": 200, "des": "no_players"},
-    {"players": ["r"], "num_of_games": 200, "des": "one_random"},
-    {"players": ["old"], "num_of_games": 200, "des": "one_old"}
+    {"players": [], "num_of_games": 5,"arena_size": 200, "des": "no_players"},
+    {"players": ["r"], "num_of_games": 5,"arena_size": 300, "des": "one_random"},
+    {"players": ["old"], "num_of_games": 5,"arena_size": 400, "des": "one_old"}
   ]
 }

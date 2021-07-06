@@ -19,6 +19,7 @@ class State:
         shape_2d = (shape[0], shape[1])
         self._rgb_board = np.ones(shape_3d) * WHITE
         self._board = np.ones(shape_2d) * WHITE_2D
+        self.arena_size = shape[0]
         self.reset_arena()
         self.colors = colors
         self._positions = positions
@@ -69,8 +70,9 @@ class State:
         self._angles[player_id] = angle
 
     def reset_arena(self):
-        self._rgb_board[self.margin:self.margin + ARENA_HEIGHT, self.margin:self.margin + ARENA_WIDTH, ...] = BLACK
-        self._board[: ARENA_HEIGHT, : ARENA_WIDTH] = BLACK_2D
+
+        self._rgb_board[self.margin:self.margin + self.arena_size, self.margin:self.margin + self.arena_size, ...] = BLACK
+        self._board[: self.arena_size, : self.arena_size] = BLACK_2D
 
     def adjust_to_drl_player(self, player_id, state_size=32):
         if self.extract_features[player_id]:
@@ -133,6 +135,7 @@ class State:
         new_state.alive = copy.copy(other.alive)
         new_state._angles = copy.copy(other.get_all_angles())
         new_state.extract_features = copy.copy(other.extract_features)
+        new_state.arena_size = other.arena_size
         return new_state
 
     def draw_circle(self, color_2d, color, center, radius):
@@ -145,8 +148,8 @@ class State:
 
     def clip(self, circle):
         circle[circle < 0] = 0
-        circle[circle[..., 0] >= ARENA_WIDTH, 0] = ARENA_WIDTH - 10
-        circle[circle[..., 1] >= ARENA_HEIGHT, 1] = ARENA_HEIGHT - 10
+        circle[circle[..., 0] >= self.arena_size, 0] = self.arena_size - 10
+        circle[circle[..., 1] >= self.arena_size, 1] = self.arena_size - 10
         return np.round(circle).astype(np.int)
 
     def draw_player(self, player_id, use_color=False):
@@ -184,13 +187,13 @@ class State:
         yy = np.round(yy).astype(np.int)
         xx[xx < self.margin] = self.margin - 1
         yy[yy < self.margin] = self.margin - 1
-        xx[xx >= ARENA_WIDTH + (self.margin * 2)] = ARENA_WIDTH + (self.margin * 2) - 1
-        yy[yy >= ARENA_HEIGHT + (self.margin * 2)] = ARENA_HEIGHT + (self.margin * 2) - 1
+        xx[xx >= self.arena_size + (self.margin * 2)] = self.arena_size + (self.margin * 2) - 1
+        yy[yy >= self.arena_size + (self.margin * 2)] = self.arena_size + (self.margin * 2) - 1
         nonzero = np.nonzero(self._rgb_board[yy, xx, ...])
         if len(nonzero[0]) > 0:
             return np.linalg.norm(position - np.array([xx[nonzero[0][0]], yy[nonzero[0][0]]]))
         return max_distance
 
     def get_player_drl_features(self, player_id):
-        features = [self._positions[player_id][0] / ARENA_WIDTH, self._positions[player_id][1] / ARENA_HEIGHT]
+        features = [self._positions[player_id][0] / self.arena_size, self._positions[player_id][1] / self.arena_size]
         return features

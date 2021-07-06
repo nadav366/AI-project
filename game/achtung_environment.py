@@ -13,8 +13,10 @@ class AchtungEnv(object):
     legal_actions = (0, 1, 2)
     colors = [PURPLE, BLUE, RED, YELLOW]
 
-    def __init__(self, training_mode=False):
+    def __init__(self, training_mode=False, arena_size=500):
         self.training_mode = training_mode
+        self.arena_size = arena_size
+        self.arena_shape = (arena_size, arena_size, 3)
 
     def reset(self):
         self.colors = self.initialize_colors()
@@ -22,7 +24,7 @@ class AchtungEnv(object):
         self.draw_status = [True for _ in range(len(self.players))]
         self.angles = self.initialize_angles()
         self.positions = self.initialize_positions()
-        self.state = State(ARENA_SHAPE, self.positions, self.angles, self.colors, self.players)
+        self.state = State(self.arena_shape, self.positions, self.angles, self.colors, self.players)
         self.actions = [STRAIGHT for _ in range(len(self.players))]
         self.draw_counters = self.initialize_draw_counters()
         self.no_draw_counters = self.initialize_draw_counters()
@@ -328,7 +330,7 @@ class AchtungEnv(object):
 
     def draw_arena(self):
         if not self.training_mode:
-            pygame.draw.rect(self.window, BLACK, (ARENA_X, ARENA_Y, ARENA_WIDTH, ARENA_HEIGHT))
+            pygame.draw.rect(self.window, BLACK, (ARENA_X, ARENA_Y, self.arena_size, self.arena_size))
         self.state.reset_arena()
 
     def text_display(self, text, x, y, color):
@@ -355,7 +357,7 @@ class AchtungEnv(object):
         return False
 
     def in_bounds(self, pos):
-        return 0 <= int(round(pos[0])) < ARENA_WIDTH and 0 <= int(round(pos[1])) < ARENA_HEIGHT
+        return 0 <= int(round(pos[0])) < self.arena_size and 0 <= int(round(pos[1])) < self.arena_size
 
     def get_head_position(self, position, angle):
         hx = np.cos(angle) * self.player_radius * 1.5
@@ -512,10 +514,10 @@ class AchtungEnv(object):
         return np.random.uniform(0, 2 * np.pi, len(self.players))
 
     def initialize_positions(self):
-        width_margin = ARENA_WIDTH // 5
-        height_margin = ARENA_HEIGHT // 5
-        xx = np.random.uniform(width_margin, ARENA_WIDTH - width_margin, len(self.players))
-        yy = np.random.uniform(height_margin, ARENA_HEIGHT - height_margin, len(self.players))
+        width_margin = self.arena_size // 5
+        height_margin = self.arena_size // 5
+        xx = np.random.uniform(width_margin, self.arena_size - width_margin, len(self.players))
+        yy = np.random.uniform(height_margin, self.arena_size - height_margin, len(self.players))
         return [(xx[i], yy[i]) for i in range(len(self.players))]
 
     def initialize_colors(self):

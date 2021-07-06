@@ -32,17 +32,6 @@ def get_model(params: SimpleNamespace):
     model.compile(optimizer='adam', loss='mse')
     return model
 
-
-def save_run_num_actions():
-    global df
-    df = df.append(pd.DataFrame({
-        'name': step_params['des'],
-        'num_actions': num_actions,
-        'step': np.arange(len(num_actions))}), ignore_index=True)
-    df.to_csv(os.path.join(dir_train, 'df_all.csv'))
-    model.save(os.path.join(dir_train, f"{step_params['des']}_model"))
-
-
 if __name__ == '__main__':
     with open(sys.argv[1], 'r') as f:
         params = json.load(f)
@@ -55,15 +44,21 @@ if __name__ == '__main__':
     exploration_rate = None
     df = pd.DataFrame()
     for step_params in params.train_plan:
-        print(f'start {step_params["des"]}')
-        players = ['r'] + step_params['players']
-        game = TrainingEnv(players, training_mode=True)
+        step_params = SimpleNamespace(**step_params)
+        print(f'start {step_params.des}')
+        players = ['r'] + step_params.players
+        game = TrainingEnv(players, training_mode=True, arena_size=step_params.arena_size)
         trained_agent = DQNAgent(game, model, exploration_decay=params.exploration_decay)
-        num_actions, exploration_rate = trained_agent.train(step_params['num_of_games'],
+        num_actions, exploration_rate = trained_agent.train(step_params.num_of_games,
                                                             dir_train,
-                                                            step_name=step_params['des'],
+                                                            step_name=step_params.des,
                                                             exploration_rate=exploration_rate,
                                                             state_size=params.state_size)
-        save_run_num_actions()
+        df = df.append(pd.DataFrame({
+            'name': step_params.des,
+            'num_actions': num_actions,
+            'step': np.arange(len(num_actions))}), ignore_index=True)
+        df.to_csv(os.path.join(dir_train, 'df_all.csv'))
+        model.save(os.path.join(dir_train, f"{step_params.des}_model"))
 
     model.save(os.path.join(dir_train, 'final_model'))

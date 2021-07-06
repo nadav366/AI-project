@@ -6,8 +6,8 @@ from game.players.drl_player import DRLPlayer
 
 
 class TrainingEnv(AchtungEnv):
-    def __init__(self, players, training_mode=False, with_positions=True):
-        AchtungEnv.__init__(self, training_mode)
+    def __init__(self, players, training_mode=False, with_positions=True, arena_size=500):
+        AchtungEnv.__init__(self, training_mode, arena_size=arena_size)
         self.initialize(players)
         self.use_positions = with_positions
 
