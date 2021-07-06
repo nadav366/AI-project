@@ -75,7 +75,7 @@ class DQNAgent:
 
         # set hyper parameters
         exploration_rate = self.exploration_rate if exploration_rate is None else exploration_rate
-        total_rewards, average_num_actions_over_100 = [], []
+        total_rewards = []
         num_actions = []
         # start training
         for i in tqdm(range(episodes)):
@@ -95,7 +95,9 @@ class DQNAgent:
 
             for step, tup in enumerate(steps_buffer):
                 # Add experience to memory
-                self.exp_rep.add(tup[0], tup[1], ep_reward - step, tup[2], self.env.get_legal_actions(state))
+                state, action, next_state = tup
+                curr_reward = 1 if step < len(steps_buffer)-5 else 0
+                self.exp_rep.add(state, action, curr_reward, next_state, self.env.get_legal_actions(state))
                 self.update_net(batch_size)  # Optimize the DoubleQ-net
                 if (step % self.net_updating_rate) == 0:
                     # update target network
@@ -107,10 +109,8 @@ class DQNAgent:
             # Update target network at the end of the episode
             self.net.align_target_model()
             if self.exp_rep.get_num() > batch_size:
-                if (i % 50) == 0 and i >= 100:
-                    average_num_actions_over_100.append(np.mean(num_actions[-100:]))
                 if (i % checkpoint_rate) == checkpoint_rate - 1:
-                    save_path = self.save_data_of_cp(average_num_actions_over_100, num_actions, step_name, train_dir, i)
+                    save_path = self.save_data_of_cp(num_actions, step_name, train_dir, i)
                     self.fights(i, save_path, step_name, train_dir)
 
             # Update exploration rate
@@ -118,16 +118,10 @@ class DQNAgent:
         self.exploration_rate = exploration_rate
         return num_actions, exploration_rate
 
-    def save_data_of_cp(self, average_num_actions_over_100, num_actions, step_name, train_dir, i):
+    def save_data_of_cp(self, num_actions, step_name, train_dir, i):
         save_path = os.path.join(train_dir, step_name, f'model_{i}')
         self.save_model(save_path)
         pd.DataFrame(num_actions).to_csv(os.path.join(train_dir, step_name, f'steps_{i}.csv'))
-        # plt.plot(np.arange(len(average_num_actions_over_100)), average_num_actions_over_100)
-        # plt.title('average reward over last 100 episodes')
-        # plt.xticks = 10 + (np.arange(len(average_num_actions_over_100)) * 5)
-        # plt.xlabel('episodes / 10')
-        # plt.ylabel('average reward over last 100 episodes')
-        # plt.savefig(os.path.join(train_dir, step_name, f'reward_{i}.png'))
         return save_path
 
     def fights(self, i, save_path, step_name, train_dir):

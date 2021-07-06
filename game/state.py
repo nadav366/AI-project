@@ -88,7 +88,7 @@ class State:
             crop_size_w = state_size // 2
             crop_size_h_under = 2
             crop_size_h_above = state_size - 2
-            down_sample = 5
+            down_sample = 4
 
             small_board = skimage.measure.block_reduce((self._board == 0).astype(int), (down_sample, down_sample), np.max)
             w, h = np.array(small_board.shape)
@@ -100,14 +100,13 @@ class State:
             rotated_bord = 1 + -ndimage.rotate(bin_board, 90 - np.rad2deg(self._angles[player_id]), reshape=False)
             y_head_new, x_head_new = np.unravel_index(np.argmax(rotated_bord), rotated_bord.shape)
             rotated_bord = np.maximum(np.minimum(rotated_bord, 1), 0)
-            rotated_bord[y_head_new, x_head_new] = 10
 
             x_right = x_head_new + crop_size_w
             x_left = x_head_new - crop_size_w
             y_top = y_head_new - crop_size_h_above
             y_bot = y_head_new + crop_size_h_under
 
-            croped_state = rotated_bord[y_top:y_bot,x_left:x_right]
+            croped_state = rotated_bord[y_top:y_bot, x_left:x_right]
 
             if False:
                 fig = plt.figure(figsize=(6, 3))

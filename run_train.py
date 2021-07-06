@@ -12,7 +12,7 @@ from double_dqn.agent import DQNAgent
 from game.training_environment import TrainingEnv
 
 
-def get_model(params):
+def get_model(params: SimpleNamespace):
     n_actions = 3
     input_tensor = Input(shape=(params.state_size, params.state_size, 1))
     x = input_tensor
@@ -33,6 +33,16 @@ def get_model(params):
     return model
 
 
+def save_run_num_actions():
+    global df
+    df = df.append(pd.DataFrame({
+        'name': step_params['des'],
+        'num_actions': num_actions,
+        'step': np.arange(len(num_actions))}), ignore_index=True)
+    df.to_csv(os.path.join(dir_train, 'df_all.csv'))
+    model.save(os.path.join(dir_train, f"{step_params['des']}_model"))
+
+
 if __name__ == '__main__':
     with open(sys.argv[1], 'r') as f:
         params = json.load(f)
@@ -48,19 +58,12 @@ if __name__ == '__main__':
         print(f'start {step_params["des"]}')
         players = ['r'] + step_params['players']
         game = TrainingEnv(players, training_mode=True)
-
-        # game.players[0].extract_features = True
         trained_agent = DQNAgent(game, model, exploration_decay=params.exploration_decay)
         num_actions, exploration_rate = trained_agent.train(step_params['num_of_games'],
                                                             dir_train,
                                                             step_name=step_params['des'],
                                                             exploration_rate=exploration_rate,
                                                             state_size=params.state_size)
-        df = df.append(pd.DataFrame({
-            'name': step_params['des'],
-            'num_actions': num_actions,
-            'step': np.arange(len(num_actions))}), ignore_index=True)
-        df.to_csv(os.path.join(dir_train, 'df_all.csv'))
-        model.save(os.path.join(dir_train, f"{step_params['des']}_model"))
+        save_run_num_actions()
 
     model.save(os.path.join(dir_train, 'final_model'))
