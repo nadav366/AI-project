@@ -49,7 +49,7 @@ if __name__ == '__main__':
         players = ['r'] + step_params['players']
         game = TrainingEnv(players, training_mode=True)
 
-        game.players[0].extract_features = True
+        # game.players[0].extract_features = True
         trained_agent = DQNAgent(game, model, exploration_decay=params.exploration_decay)
         num_actions, exploration_rate = trained_agent.train(step_params['num_of_games'],
                                                             dir_train,
