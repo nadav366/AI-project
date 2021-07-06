@@ -84,10 +84,10 @@ class State:
             state_rep[num_angles: num_angles + features_per_player] = self.get_player_drl_features(player_id)
             return state_rep
         else:
-            N = state_size
-            crop_size_w = 16
+            N = state_size * 2
+            crop_size_w = state_size // 2
             crop_size_h_under = 2
-            crop_size_h_above = 30
+            crop_size_h_above = state_size - 2
             down_sample = 5
 
             small_board = skimage.measure.block_reduce((self._board == 0).astype(int), (down_sample, down_sample), np.max)

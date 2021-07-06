@@ -14,7 +14,7 @@ from game.training_environment import TrainingEnv
 
 def get_model(params):
     n_actions = 3
-    input_tensor = Input(shape=(32, 32, 1))
+    input_tensor = Input(shape=(params.state_size, params.state_size, 1))
     x = input_tensor
     for filter_size in params.conv_filters:
         x = Conv2D(filters=filter_size, kernel_size=(3, 3), activation='relu')(x)
@@ -54,7 +54,8 @@ if __name__ == '__main__':
         num_actions, exploration_rate = trained_agent.train(step_params['num_of_games'],
                                                             dir_train,
                                                             step_name=step_params['des'],
-                                                            exploration_rate=exploration_rate)
+                                                            exploration_rate=exploration_rate,
+                                                            state_size=params.state_size)
         df = df.append(pd.DataFrame({
             'name': step_params['des'],
             'num_actions': num_actions,

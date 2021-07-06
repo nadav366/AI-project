@@ -29,7 +29,7 @@ class DQNAgent:
 
         # the number of experience per batch for batch learning
         # Experience Replay for batch learning
-        self.exp_rep = ExperienceReplay()
+        self.exp_rep = ExperienceReplay(state_size=self.state_shape[0])
 
         # Deep Q Network
         self.net = DoubleDQN(model)
@@ -59,7 +59,7 @@ class DQNAgent:
 
     def train(self, episodes: int, train_dir, step_name,
               max_actions: int = None, batch_size: int = 64,
-              checkpoint_rate=200, exploration_rate=None):
+              checkpoint_rate=200, exploration_rate=None, state_size=32):
         """
         Runs a training session for the agent
         :param episodes: number of episodes to train.
@@ -80,13 +80,13 @@ class DQNAgent:
         # start training
         for i in tqdm(range(episodes)):
             self.env.reset()  # Reset the environment for a new episode
-            state = self.env.get_state()  # Get starting state
+            state = self.env.get_state(state_size=state_size)  # Get starting state
             ep_reward = 0
             steps_buffer = []
             while max_actions is None or len(steps_buffer) <= max_actions:
 
                 action = self.get_action(state, exploration_rate)
-                next_state, reward = self.env.step(action)
+                next_state, reward = self.env.step(action, state_size=state_size)
                 steps_buffer.append((state, action, next_state))
                 ep_reward += reward
                 if next_state is None:  # The action taken led to a  terminal state

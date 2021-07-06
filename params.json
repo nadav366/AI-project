@@ -4,6 +4,7 @@
   "fc_sizes": [128,64],
   "dropout": 0.3,
   "exploration_decay": 1e-6,
+  "state_size": 64,
 
   "train_plan": [
     {"players": [], "num_of_games": 200, "des": "no_players"},

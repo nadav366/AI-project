@@ -7,9 +7,10 @@ Transition = namedtuple('Transition', ('state', 'action', 'reward', 'next_state'
 
 
 class ExperienceReplay:
-    def __init__(self, e_max=10000):
+    def __init__(self, e_max=10000, state_size=32):
         self._max = e_max  # maximum number of experiences
         self.transitions = []  # total experiences the Agent stored
+        self.state_size = state_size
 
     def get_max(self):
         """return the maximum number of experiences"""
@@ -42,5 +43,5 @@ class ExperienceReplay:
         if self.get_num() > self.get_max():
             del self.transitions[0]
         """add single experience"""
-        assert state.shape[0] == state.shape[1] and state.shape[0] == 32
+        assert state.shape[0] == state.shape[1] and state.shape[0] == self.state_size
         self.transitions.append(Transition(state, action, reward, next_state, legal_actions))

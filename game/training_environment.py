@@ -11,8 +11,8 @@ class TrainingEnv(AchtungEnv):
         self.initialize(players)
         self.use_positions = with_positions
 
-    def get_state(self, player_id=0):
-        return self.state.adjust_to_drl_player(player_id)
+    def get_state(self, player_id=0, state_size=32):
+        return self.state.adjust_to_drl_player(player_id, state_size=state_size)
 
     def set_player(self, player_id, *args):
         self.players[player_id] = DRLPlayer(player_id, self, *args)
@@ -20,7 +20,7 @@ class TrainingEnv(AchtungEnv):
     def get_legal_actions(self, state=None, player_id=0):
         return np.ones(3)
 
-    def step(self, action, player_id=0):
+    def step(self, action, player_id=0, state_size=32):
         if not self.state.alive[player_id]:  # or self.state.is_terminal_state():
             return None, 0
         for i, player in enumerate(self.players):
@@ -31,7 +31,7 @@ class TrainingEnv(AchtungEnv):
                     self.actions[i] = player.get_action(self.state)
         for _ in range(self.action_sampling_rate):
             self.tick()
-        return self.get_state(player_id), 1
+        return self.get_state(player_id, state_size=state_size), 1
 
     def loop(self):
         while True:
