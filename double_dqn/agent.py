@@ -59,7 +59,8 @@ class DQNAgent:
 
     def train(self, episodes: int, train_dir, step_name,
               max_actions: int = None, batch_size: int = 128,
-              checkpoint_rate=200, exploration_rate=None, state_size=32):
+              checkpoint_rate=200, exploration_rate=None, state_size=32,
+              step_index=-1):
         """
         Runs a training session for the agent
         :param episodes: number of episodes to train.
@@ -111,7 +112,7 @@ class DQNAgent:
             if self.exp_rep.get_num() > batch_size:
                 if (i % checkpoint_rate) == checkpoint_rate - 1:
                     save_path = self.save_data_of_cp(num_actions, step_name, train_dir, i)
-                    self.fights(i, save_path, step_name, train_dir)
+                    self.fights(i, save_path, step_name, train_dir, step_index)
 
             # Update exploration rate
             exploration_rate = max(0.1, 0.01 + (exploration_rate - 0.01) * np.exp(-self.exploration_decay * (i + 1)))
@@ -124,17 +125,17 @@ class DQNAgent:
         pd.DataFrame(num_actions).to_csv(os.path.join(train_dir, step_name, f'steps_{i}.csv'))
         return save_path
 
-    def fights(self, i, save_path, step_name, train_dir):
+    def fights(self, i, save_path, step_name, train_dir, step_index):
         res_rand = fight([save_path, 'r'])
         rand_csv_path = os.path.join(train_dir, 'random.csv')
         df = self.read_or_create(rand_csv_path)
-        df = df.append({'name': step_name, 'i': i, 'me': res_rand[0], 'rand_res': res_rand[1]}, ignore_index=True)
+        df = df.append({'name': step_name, 'i': i, 'me': res_rand[0], 'rand_res': res_rand[1], 'step_index':step_index}, ignore_index=True)
         df.to_csv(rand_csv_path, index=False)
 
         old_rand = fight([save_path, 'old'])
         rand_csv_path = os.path.join(train_dir, 'old.csv')
         df = self.read_or_create(rand_csv_path)
-        df = df.append({'name': step_name, 'i': i, 'me': old_rand[0], 'old_player': old_rand[1]}, ignore_index=True)
+        df = df.append({'name': step_name, 'i': i, 'me': old_rand[0], 'old_player': old_rand[1], 'step_index':step_index}, ignore_index=True)
         df.to_csv(rand_csv_path, index=False)
 
     @staticmethod

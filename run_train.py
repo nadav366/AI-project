@@ -53,7 +53,8 @@ if __name__ == '__main__':
                                                             dir_train,
                                                             step_name=step_params.des,
                                                             exploration_rate=exploration_rate,
-                                                            state_size=params.state_size)
+                                                            state_size=params.state_size,
+                                                            step_index=i)
         df = df.append(pd.DataFrame({
             'name': step_params.des,
             'num_actions': num_actions,
