@@ -1,6 +1,7 @@
 from game.training_environment import TrainingEnv
 import numpy as np
 
+
 def fight(players: list, num_of_fights=50):
     num_of_win = dict.fromkeys(range(len(players)), 0)
     for _ in range(num_of_fights):

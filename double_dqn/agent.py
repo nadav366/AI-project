@@ -125,13 +125,13 @@ class DQNAgent:
         return save_path
 
     def fights(self, i, save_path, step_name, train_dir):
-        res_rand = fight([save_path, 'r'], num_of_fights=100)
+        res_rand = fight([save_path, 'r'])
         rand_csv_path = os.path.join(train_dir, 'random.csv')
         df = self.read_or_create(rand_csv_path)
         df = df.append({'name': step_name, 'i': i, 'me': res_rand[0], 'rand_res': res_rand[1]}, ignore_index=True)
         df.to_csv(rand_csv_path, index=False)
 
-        old_rand = fight([save_path, 'old'], num_of_fights=100)
+        old_rand = fight([save_path, 'old'])
         rand_csv_path = os.path.join(train_dir, 'old.csv')
         df = self.read_or_create(rand_csv_path)
         df = df.append({'name': step_name, 'i': i, 'me': old_rand[0], 'old_player': old_rand[1]}, ignore_index=True)
