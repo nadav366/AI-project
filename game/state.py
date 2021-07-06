@@ -72,7 +72,7 @@ class State:
         self._rgb_board[self.margin:self.margin + ARENA_HEIGHT, self.margin:self.margin + ARENA_WIDTH, ...] = BLACK
         self._board[: ARENA_HEIGHT, : ARENA_WIDTH] = BLACK_2D
 
-    def adjust_to_drl_player(self, player_id):
+    def adjust_to_drl_player(self, player_id, state_size=32):
         if self.extract_features[player_id]:
             max_distance = 350
             num_angles = 25
@@ -84,7 +84,7 @@ class State:
             state_rep[num_angles: num_angles + features_per_player] = self.get_player_drl_features(player_id)
             return state_rep
         else:
-            N = 50
+            N = state_size
             crop_size_w = 16
             crop_size_h_under = 2
             crop_size_h_above = 30
@@ -100,6 +100,7 @@ class State:
             rotated_bord = 1 + -ndimage.rotate(bin_board, 90 - np.rad2deg(self._angles[player_id]), reshape=False)
             y_head_new, x_head_new = np.unravel_index(np.argmax(rotated_bord), rotated_bord.shape)
             rotated_bord = np.maximum(np.minimum(rotated_bord, 1), 0)
+            rotated_bord[y_head_new, x_head_new] = 10
 
             x_right = x_head_new + crop_size_w
             x_left = x_head_new - crop_size_w

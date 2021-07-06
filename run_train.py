@@ -19,13 +19,13 @@ def get_model(params):
     for filter_size in params.conv_filters:
         x = Conv2D(filters=filter_size, kernel_size=(3, 3), activation='relu')(x)
         x = BatchNormalization()(x)
-        x = Dropout(0.3)(x)
+        x = Dropout(params.dropout)(x)
     x = Flatten()(x)
 
     for fc_size in params.fc_sizes:
         x = Dense(fc_size, activation='relu')(x)
         x = BatchNormalization()(x)
-        x = Dropout(0.3)(x)
+        x = Dropout(params.dropout)(x)
 
     final = Dense(n_actions)(x)
     model = Model(inputs=input_tensor, outputs=final)
@@ -41,9 +41,6 @@ if __name__ == '__main__':
     dir_train = os.path.join('run_trains', f"{params.name}_{time}")
     os.makedirs(dir_train)
 
-    pd.DataFrame().to_csv(os.path.join(dir_train, 'random.csv'))
-    pd.DataFrame().to_csv(os.path.join(dir_train, 'old.csv'))
-
     model = get_model(params)
     exploration_rate = None
     df = pd.DataFrame()
@@ -51,8 +48,11 @@ if __name__ == '__main__':
         print(f'start {step_params["des"]}')
         players = ['r'] + step_params['players']
         game = TrainingEnv(players, training_mode=True)
-        trained_agent = DQNAgent(game, model)
-        num_actions, exploration_rate = trained_agent.train(step_params['num_of_games'], dir_train,
+
+        game.players[0].extract_features = True
+        trained_agent = DQNAgent(game, model, exploration_decay=params.exploration_decay)
+        num_actions, exploration_rate = trained_agent.train(step_params['num_of_games'],
+                                                            dir_train,
                                                             step_name=step_params['des'],
                                                             exploration_rate=exploration_rate)
         df = df.append(pd.DataFrame({

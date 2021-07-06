@@ -2,6 +2,7 @@ import os
 
 import numpy as np
 import pandas as pd
+import tensorflow as tf
 from matplotlib import pyplot as plt
 from tensorflow.keras.models import load_model, model_from_json
 from tqdm import tqdm
@@ -12,7 +13,7 @@ from game.training_environment import TrainingEnv
 from evaluation import fight
 
 class DQNAgent:
-    def __init__(self, env, model,
+    def __init__(self, env, model: tf.keras.models.Model,
                  net_update_rate: int = 25,
                  exploration_rate: float = 1.0,
                  exploration_decay: float = 0.000001):
@@ -23,8 +24,8 @@ class DQNAgent:
 
         # set environment
         self.env = env
-        self.state_shape = env.get_state().shape
-        self.action_shape = self.env.get_legal_actions(self.env.get_state()).shape
+        self.state_shape = tuple(model.input.shape.as_list()[1:])
+        self.action_shape = tuple(model.output.shape.as_list()[1:])
 
         # the number of experience per batch for batch learning
         # Experience Replay for batch learning
@@ -132,16 +133,23 @@ class DQNAgent:
     def fights(self, i, save_path, step_name, train_dir):
         res_rand = fight([save_path, 'r'], num_of_fights=100)
         rand_csv_path = os.path.join(train_dir, 'random.csv')
-        df = pd.read_csv(rand_csv_path)
+        df = self.read_or_create(rand_csv_path)
         df = df.append({'name': step_name, 'i': i, 'me': res_rand[0], 'rand_res': res_rand[1]}, ignore_index=True)
-        df.to_csv(rand_csv_path)
+        df.to_csv(rand_csv_path, index=False)
 
         old_rand = fight([save_path, 'old'], num_of_fights=100)
         rand_csv_path = os.path.join(train_dir, 'old.csv')
-        df = pd.read_csv(rand_csv_path)
-        # df = df.append({'name': step_name, 'i': i, 'old': old_rand[0], 'rand_old': old_rand[1]}, ignore_index=True)
+        df = self.read_or_create(rand_csv_path)
         df = df.append({'name': step_name, 'i': i, 'me': old_rand[0], 'old_player': old_rand[1]}, ignore_index=True)
         df.to_csv(rand_csv_path, index=False)
+
+    @staticmethod
+    def read_or_create(path):
+        if os.path.exists(path):
+            df = pd.read_csv(path)
+        else:
+            df = pd.DataFrame()
+        return df
 
     def get_state_shape(self):
         return self.state_shape
