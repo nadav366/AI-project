@@ -58,7 +58,7 @@ class DQNAgent:
         self.net.fit(*batch)
 
     def train(self, episodes: int, train_dir, step_name,
-              max_actions: int = None, batch_size: int = 64,
+              max_actions: int = None, batch_size: int = 128,
               checkpoint_rate=200, exploration_rate=None, state_size=32):
         """
         Runs a training session for the agent
