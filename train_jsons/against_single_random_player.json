@@ -1,5 +1,7 @@
 {
   "name": "against_single_random_player",
+  "conv_filters": [16,32],
+  "fc_sizes": [128,64],
   "train_plan": [
     {"players": ["r"], "num_of_games": 1000, "des": "play_against_single_player"}
   ]

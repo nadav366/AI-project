@@ -2,25 +2,31 @@ import datetime
 import json
 import os
 import sys
-
+from types import SimpleNamespace
 import numpy as np
 import pandas as pd
 from tensorflow.keras import Model
-from tensorflow.keras.layers import Dense, Input, Conv2D, Dropout, Flatten
+from tensorflow.keras.layers import Dense, Input, Conv2D, Dropout, Flatten, BatchNormalization
 
 from double_dqn.agent import DQNAgent
 from game.training_environment import TrainingEnv
 
 
-def get_model():
+def get_model(params):
     n_actions = 3
     input_tensor = Input(shape=(32, 32, 1))
-    x = Conv2D(filters=16, kernel_size=(3, 3), activation='relu')(input_tensor)
-    x = Conv2D(filters=32, kernel_size=(3, 3), activation='relu')(x)
-    x = Dropout(0.3)(x)
+    x = input_tensor
+    for filter_size in params.conv_filters:
+        x = Conv2D(filters=filter_size, kernel_size=(3, 3), activation='relu')(x)
+        x = BatchNormalization()(x)
+        x = Dropout(0.3)(x)
     x = Flatten()(x)
-    x = Dense(128, activation='relu')(x)
-    x = Dense(64, activation='relu')(x)
+
+    for fc_size in params.fc_sizes:
+        x = Dense(fc_size, activation='relu')(x)
+        x = BatchNormalization()(x)
+        x = Dropout(0.3)(x)
+
     final = Dense(n_actions)(x)
     model = Model(inputs=input_tensor, outputs=final)
     model.compile(optimizer='adam', loss='mse')
@@ -30,17 +36,18 @@ def get_model():
 if __name__ == '__main__':
     with open(sys.argv[1], 'r') as f:
         params = json.load(f)
+    params = SimpleNamespace(**params)
     time = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
-    dir_train = os.path.join('run_trains', f"{params['name']}_{time}")
+    dir_train = os.path.join('run_trains', f"{params.name}_{time}")
     os.makedirs(dir_train)
 
     pd.DataFrame().to_csv(os.path.join(dir_train, 'random.csv'))
     pd.DataFrame().to_csv(os.path.join(dir_train, 'old.csv'))
 
-    model = get_model()
+    model = get_model(params)
     exploration_rate = None
     df = pd.DataFrame()
-    for step_params in params['train_plan']:
+    for step_params in params.train_plan:
         print(f'start {step_params["des"]}')
         players = ['r'] + step_params['players']
         game = TrainingEnv(players, training_mode=True)

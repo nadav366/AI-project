@@ -38,7 +38,10 @@ class TrainingEnv(AchtungEnv):
             self.counter += 1
             self.update_actions()
             self.tick()
-            if np.sum(self.state.alive) == 1:
-                winner = np.where(self.state.alive)[0][0]
-                return winner
+            if np.sum(self.state.alive) <= 1:
+                winner_idx = np.where(self.state.alive)[0]
+                if len(winner_idx) > 0:
+                    return winner_idx[0]
+                else:
+                    return -1
 

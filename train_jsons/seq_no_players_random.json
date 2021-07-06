@@ -1,5 +1,7 @@
 {
   "name": "seq_no_players_random",
+  "conv_filters": [16,32],
+  "fc_sizes": [128,64],
   "train_plan": [
     {"players": [], "num_of_games": 1000, "des": "no_players"},
     {"players": ["r"], "num_of_games": 1000, "des": "one_random"}
