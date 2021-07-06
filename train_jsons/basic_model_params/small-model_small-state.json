@@ -1,0 +1,11 @@
+{
+  "name": "small-model_small-state",
+  "conv_filters": [16,32],
+  "fc_sizes": [128,64],
+  "dropout": 0.4,
+  "exploration_decay": 1e-6,
+  "state_size": 16,
+  "train_plan": [
+    {"players": [], "num_of_games": 3000,"arena_size": 300, "des": "small-model_small-state"}
+  ]
+}

@@ -1,0 +1,19 @@
+// TODO: change model parameters according to the results
+{
+  "name": "curriculum_board_players",
+  "conv_filters": [16,32,32],
+  "fc_sizes": [128,64,32],
+  "dropout": 0.4,
+  "exploration_decay": 1e-6,
+  "state_size": 64,
+  "train_plan": [
+    {"players": [], "num_of_games": 3000,"arena_size": 200, "des": "no_players_arena200"},
+    {"players": [], "num_of_games": 3000,"arena_size": 300, "des": "no_players_arena300"},
+    {"players": ["r"], "num_of_games": 3000,"arena_size": 300, "des": "r_player_arena300"},
+    {"players": ["old"], "num_of_games": 3000,"arena_size": 300, "des": "old_player_arena300"},
+    {"players": ["old"], "num_of_games": 3000,"arena_size": 400, "des": "old_player_arena400"},
+    {"players": ["r", "r"], "num_of_games": 3000,"arena_size": 400, "des": "2r_players_arena400"},
+    {"players": ["r", "old"], "num_of_games": 3000,"arena_size": 400, "des": "r_old_players_arena400"},
+    {"players": ["old", "old"], "num_of_games": 3000,"arena_size": 400, "des": "2old_players_arena400"}
+  ]
+}
