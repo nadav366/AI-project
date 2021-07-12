@@ -1,0 +1,11 @@
+{
+  "name": "decay_e-7",
+  "conv_filters": [16,32],
+  "fc_sizes": [128,64],
+  "dropout": 0.4,
+  "exploration_decay": 1e-7,
+  "state_size": 32,
+  "train_plan": [
+    {"players": [], "num_of_games": 1500,"arena_size": 300, "des": "small-model_medium-state"}
+  ]
+}

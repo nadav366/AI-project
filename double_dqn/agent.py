@@ -113,7 +113,7 @@ class DQNAgent:
                 if (i % checkpoint_rate) == checkpoint_rate - 1:
                     save_path = self.save_data_of_cp(num_actions, step_name, train_dir, i)
                     # self.fights(i, save_path, step_name, train_dir, step_index)
-            with open(os.path.join(train_dir, 'exploration_rate.txt'), 'w') as exp_rate:
+            with open(os.path.join(train_dir, 'exploration_rate.txt'), 'a') as exp_rate:
                 exp_rate.writelines([str(exploration_rate)])
 
             # Update exploration rate

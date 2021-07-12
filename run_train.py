@@ -18,13 +18,13 @@ def get_model(params: SimpleNamespace):
     input_tensor = Input(shape=(params.state_size, params.state_size, 1))
     x = input_tensor
     for filter_size in params.conv_filters:
-        x = Conv2D(filters=filter_size, kernel_size=(3, 3), activation='relu')(x)
+        x = Conv2D(filters=filter_size, kernel_size=(3, 3), activation='relu', activity_regularizer='l2')(x)
         x = BatchNormalization()(x)
         x = Dropout(params.dropout)(x)
     x = Flatten()(x)
 
     for fc_size in params.fc_sizes:
-        x = Dense(fc_size, activation='relu')(x)
+        x = Dense(fc_size, activation='relu', activity_regularizer='l2')(x)
         x = BatchNormalization()(x)
         x = Dropout(params.dropout)(x)
 
