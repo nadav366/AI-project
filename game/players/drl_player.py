@@ -1,5 +1,5 @@
 import numpy as np
-
+import tensorflow as tf
 from game.players.player import Player
 
 
@@ -17,6 +17,10 @@ class DRLPlayer(Player):
         self.predictions += 1
         drl_state = state.adjust_to_drl_player(self.id, state_size=self._net.input.shape.as_list()[1])  # self.crop_box(state.board, state.positions)
         values = self._net(drl_state[np.newaxis, ...], training=False)
-        # print(values, end=', ')
-        # print(np.argmax(values))
-        return np.random.choice(np.flatnonzero(values == np.max(values)))
+        # probs = tf.math.softmax(values).numpy().flatten()
+        # choice = np.random.choice(a=[0, 1, 2], p=probs)
+        choice = np.random.choice(np.flatnonzero(values == np.max(values)))
+        print(values, end=', ')
+        print(choice)
+        return choice
+

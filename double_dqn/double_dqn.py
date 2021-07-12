@@ -21,23 +21,18 @@ class DoubleDQN:
         """
         self.target_net.set_weights(self.q_net.get_weights())
 
-    def predict(self, states: np.ndarray, legal_actions: np.ndarray) -> np.ndarray:
+    def predict(self, states: np.ndarray) -> np.ndarray:
         """
         Given a state and legal actions that can be taken from that step, calculates the Q-values of (state, action) for
         each action that can be taken (illegal actions are evaluated as 0). Also works for a batch of states.
         :param states: a batch of states
-        :param legal_actions: a batch of boolean vectors representing the legal actions from each step.
         :return: A numpy.ndarray representing the Estimated Q-values of all actions that can be taken from the specified
                 state
         """
 
-        q_values = self.q_net.predict(tf.convert_to_tensor(states))
-        illegal = np.where(np.logical_not(legal_actions))
-        q_values[illegal[0], illegal[1]] = 0  # setting q_values of illegal actions to 0. TODO: Check maybe set to -inf
-        return q_values
+        return self.q_net.predict(tf.convert_to_tensor(states))
 
-    def fit(self, states: np.ndarray, actions: np.ndarray, next_states: np.ndarray, rewards: np.ndarray,
-            legal_actions: np.ndarray):
+    def fit(self, states: np.ndarray, actions: np.ndarray, next_states: np.ndarray, rewards: np.ndarray):
         """
         Updates the net according to the Double Q-learning paradigm.
         :param states: A batch of states.
@@ -46,12 +41,10 @@ class DoubleDQN:
                 (Expects None if the state was a terminal state).
         :param rewards: A batch of rewards given after taking soecified actions from specified states and transitioning
                 to specified next_states.
-        :param legal_actions: A batch of legal actions that are allowed from the specified states.
         """
         if self.q_net is None:
             raise NotImplementedError('model was not initiated')
-        targets = self.predict(states, legal_actions)
-        # hist = np.histogram(np.argmax(targets, axis=1), bins=[-0.5, 0.5, 1.5, 2.5], density=True)[0]
+        targets = self.predict(states)
         # Create masks for separating terminal states from non terminal states.
         terminal_mask = np.array([next_state is None for next_state in list(next_states)])
         non_terminal_mask = np.logical_not(terminal_mask)

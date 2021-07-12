@@ -17,9 +17,6 @@ class TrainingEnv(AchtungEnv):
     def set_player(self, player_id, *args):
         self.players[player_id] = DRLPlayer(player_id, self, *args)
 
-    def get_legal_actions(self, state=None, player_id=0):
-        return np.ones(3)
-
     def step(self, action, player_id=0, state_size=32):
         if not self.state.alive[player_id]:  # or self.state.is_terminal_state():
             return None, -1

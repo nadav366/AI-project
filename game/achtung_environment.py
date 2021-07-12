@@ -10,7 +10,6 @@ from static.settings import *
 
 
 class AchtungEnv(object):
-    legal_actions = (0, 1, 2)
     colors = [PURPLE, BLUE, RED, YELLOW]
 
     def __init__(self, training_mode=False, arena_size=500):
@@ -277,9 +276,6 @@ class AchtungEnv(object):
 
     def get_state(self, player_id=0):
         return self.state
-
-    def get_legal_actions(self, state, player_id):
-        return [RIGHT, LEFT, STRAIGHT]
 
     ### Drawing related methods ###
     def update_graphics(self):

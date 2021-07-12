@@ -21,13 +21,3 @@ class DQNEnv:
 
     def get_state(self):
         return self.state
-
-    @abc.abstractmethod
-    def get_legal_actions(self, state):
-        """ Returns a boolean vector representing the legal actions that can be taken from specified state"""
-        raise NotImplementedError(DQNEnv.message)
-
-    # @abc.abstractmethod
-    # def is_terminal_state(self, state):
-    #     """ Returns True iff specified state is a terminal state"""
-    #     raise NotImplementedError(DQNEnv.message)

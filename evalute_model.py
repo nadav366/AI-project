@@ -36,20 +36,24 @@ def plot_graph_for_all_train(dir_path):
     if os.path.exists(all_df_path):
         df = pd.read_csv(all_df_path)
     else:
-        one_stage_name = [f for f in os.listdir(dir_path) if 'steps' in f][0]
+        try:
+            one_stage_name = [f for f in os.listdir(dir_path) if 'steps' in f][0]
+        except:
+            print(dir_path)
+            return
         one_stage_path = os.path.join(dir_path, one_stage_name)
         df = pd.read_csv(one_stage_path)
         df['step_index'] = 0
         df['name'] = os.path.basename(dir_path)
         df.rename({'Unnamed: 0': 'step', '0': 'num_actions'}, axis=1, inplace=True)
 
-    plt.figure(figsize=(4 * len(df) / 1000, 4))
+    plt.figure(figsize=(max(4, 4 * len(df) / 1000), 4))
     df.reset_index(drop=True, inplace=True)
     groups = df.groupby('step_index')
     num_actions_arr = groups.num_actions.apply(list)
     name_arr = groups.name.unique()
     steps_arr = groups.step.apply(list)
-    N = 100
+    N = 50
     last_step_len = 0
     y_all = np.convolve(df.num_actions, np.ones((N,)) / N, mode='valid')
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
@@ -61,12 +65,12 @@ def plot_graph_for_all_train(dir_path):
         min_diss = abs(y_all.min() - y_smooth.min())
         max_diss = abs(y_all.max() - y_smooth.max())
         if max_diss > min_diss:
-            y_pos = np.random.randint(y_all.max()*0.8, y_all.max())
+            y_pos = np.random.randint(y_all.max() * 0.8, y_all.max())
         elif max_diss < min_diss:
-            y_pos = np.random.randint(y_all.min(), y_all.min()*1.3)
+            y_pos = np.random.randint(y_all.min(), y_all.min() * 1.3)
         else:
             y_pos = np.random.randint(y_all.min(), y_all.max())
-        plt.text((last_step_len + x_vals.mean())//2,y_pos, name_arr[i][0], bbox=props)
+        plt.text((last_step_len + x_vals.mean()) // 2, y_pos, name_arr[i][0], bbox=props)
         last_step_len += len(num_actions_arr[i])
         if i + 1 != steps_arr.size:
             plt.axvline(x=last_step_len, ls='dotted')

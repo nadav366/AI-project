@@ -3,7 +3,7 @@ from collections import namedtuple
 
 import numpy as np
 
-Transition = namedtuple('Transition', ('state', 'action', 'reward', 'next_state', 'legal_actions'))
+Transition = namedtuple('Transition', ('state', 'action', 'reward', 'next_state'))
 
 
 class ExperienceReplay:
@@ -35,13 +35,12 @@ class ExperienceReplay:
         action = np.array(batch.action)
         reward = np.array(batch.reward)
         next_state = np.array(batch.next_state)
-        legal_actions = np.array(batch.legal_actions)
-        return state, action, next_state, reward, legal_actions
+        return state, action, next_state, reward
 
-    def add(self, state, action, reward, next_state, legal_actions):
+    def add(self, state, action, reward, next_state):
         """remove the oldest experience if the memory is full"""
         if self.get_num() > self.get_max():
             del self.transitions[0]
         """add single experience"""
         assert state.shape[0] == state.shape[1] and state.shape[0] == self.state_size
-        self.transitions.append(Transition(state, action, reward, next_state, legal_actions))
+        self.transitions.append(Transition(state, action, reward, next_state))

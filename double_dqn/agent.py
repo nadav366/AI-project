@@ -14,9 +14,9 @@ from evaluation import fight
 
 class DQNAgent:
     def __init__(self, env, model: tf.keras.models.Model,
-                 net_update_rate: int = 25,
+                 net_update_rate: int = 10,
                  exploration_rate: float = 1.0,
-                 exploration_decay: float = 0.000001):
+                 exploration_decay: float = 1e-6):
         # set hyper parameters
         self.exploration_rate = exploration_rate
         self.exploration_decay = exploration_decay
@@ -38,16 +38,13 @@ class DQNAgent:
         """Given a state returns a random action with probability eps, and argmax(q_net(state)) with probability 1-eps.
            (only legal actions are considered)"""
 
-        legal_actions = self.env.get_legal_actions(state)
         if np.random.random() >= eps:  # Exploitation
-
+            q = self.net.predict(state[np.newaxis, ...])
             # Calculate the Q-value of each action
-            q_values = self.net.predict(state[np.newaxis, ...], np.expand_dims(legal_actions, 0))
-
-            # Make sure we only choose between available actions
-            legal_actions = np.logical_and(legal_actions, q_values == np.max(q_values))
-
-        return np.random.choice(np.flatnonzero(legal_actions))
+            probs = tf.math.softmax(q).numpy().flatten()
+            choice = np.random.choice(a=[0, 1, 2], p=probs)
+            return choice
+        return np.random.choice(np.arange(3))
 
     def update_net(self, batch_size: int):
         """ if there are more than batch_size experiences, Optimizes the network's weights using the Double-Q-learning
@@ -90,7 +87,7 @@ class DQNAgent:
                 next_state, reward = self.env.step(action)
                 ep_reward += reward
                 # Add experience to memory
-                self.exp_rep.add(state, action, reward, next_state, self.env.get_legal_actions(state))
+                self.exp_rep.add(state, action, reward, next_state)
                 self.update_net(batch_size)  # Optimize the DoubleQ-net
                 if next_state is None:  # The action taken led to a  terminal state
                     break
@@ -104,7 +101,7 @@ class DQNAgent:
             total_rewards.append(ep_reward)
             num_actions.append(step)
             # Update target network at the end of the episode
-            self.net.align_target_model() # Optimize the DoubleQ-net
+            self.net.align_target_model()  # Optimize the DoubleQ-net
             if (step % self.net_updating_rate) == 0:
                 # update target network
                 self.net.align_target_model()
@@ -114,7 +111,7 @@ class DQNAgent:
                     save_path = self.save_data_of_cp(num_actions, step_name, train_dir, i)
                     # self.fights(i, save_path, step_name, train_dir, step_index)
             with open(os.path.join(train_dir, 'exploration_rate.txt'), 'a') as exp_rate:
-                exp_rate.writelines([str(exploration_rate)])
+                exp_rate.writelines([str(exploration_rate) + '\n'])
 
             # Update exploration rate
             exploration_rate = max(0.1, 0.01 + (exploration_rate - 0.01) * np.exp(-self.exploration_decay * (i + 1)))

@@ -6,6 +6,6 @@
   "exploration_decay": 1e-5,
   "state_size": 32,
   "train_plan": [
-    {"players": [], "num_of_games": 1500,"arena_size": 300, "des": "small-model_medium-state"}
+    {"players": [], "num_of_games": 1500,"arena_size": 200, "des": "small-model_medium-state"}
   ]
 }
