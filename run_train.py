@@ -3,6 +3,7 @@ import json
 import os
 import sys
 from types import SimpleNamespace
+
 import numpy as np
 import pandas as pd
 from tensorflow.keras import Model
@@ -32,16 +33,21 @@ def get_model(params: SimpleNamespace):
     model.compile(optimizer='adam', loss='mse')
     return model
 
+
 if __name__ == '__main__':
     with open(sys.argv[1], 'r') as f:
         params = json.load(f)
     params = SimpleNamespace(**params)
     time = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
     dir_train = os.path.join('run_trains', f"{params.name}_{time}")
-    os.makedirs(dir_train, )
+    os.makedirs(dir_train)
 
     model = get_model(params)
-    exploration_rate = None
+
+    # player_type = "C:\\Users\\NADAV\\.PyCharm2018.1\\AI\\project\\run_trains\\curriculum_players-1000_110721_070626\\2r_players_model"
+    # model = tf.keras.models.load_model(player_type)
+
+    exploration_rate = 1
     df = pd.DataFrame()
     for i, step_params in enumerate(params.train_plan):
         step_params = SimpleNamespace(**step_params)
@@ -52,7 +58,7 @@ if __name__ == '__main__':
         num_actions, exploration_rate = trained_agent.train(step_params.num_of_games,
                                                             dir_train,
                                                             step_name=step_params.des,
-                                                            exploration_rate=exploration_rate,
+                                                            exploration_rate=(exploration_rate + 1.0) / 2,
                                                             state_size=params.state_size,
                                                             step_index=i)
         df = df.append(pd.DataFrame({

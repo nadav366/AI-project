@@ -22,7 +22,7 @@ class TrainingEnv(AchtungEnv):
 
     def step(self, action, player_id=0, state_size=32):
         if not self.state.alive[player_id]:  # or self.state.is_terminal_state():
-            return None, 0
+            return None, -1
         for i, player in enumerate(self.players):
             if self.state.alive[i]:
                 if i == player_id:

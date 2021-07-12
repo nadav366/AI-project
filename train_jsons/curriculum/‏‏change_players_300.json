@@ -1,0 +1,17 @@
+{
+  "name": "curriculum_players-300",
+  "conv_filters": [16,32,32],
+  "fc_sizes": [64,32],
+  "dropout": 0.4,
+  "exploration_decay": 1e-6,
+  "state_size": 64,
+  "reward_rol": "one-zero",
+  "train_plan": [
+    {"players": [], "num_of_games": 300,"arena_size": 300, "des": "no_players"},
+    {"players": ["r"], "num_of_games": 300,"arena_size": 300, "des": "r_player"},
+    {"players": ["old"], "num_of_games": 300,"arena_size": 300, "des": "old_player"},
+    {"players": ["r", "r"], "num_of_games": 300,"arena_size": 300, "des": "2r_players"},
+    {"players": ["r", "old"], "num_of_games": 300,"arena_size": 300, "des": "r_old_players"},
+    {"players": ["old", "old"], "num_of_games": 300,"arena_size": 300, "des": "2old_players"}
+  ]
+}

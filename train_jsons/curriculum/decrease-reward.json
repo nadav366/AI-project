@@ -1,0 +1,12 @@
+{
+  "name": "decrease-reward",
+  "conv_filters": [16,32,32],
+  "fc_sizes": [64,32],
+  "dropout": 0.4,
+  "exploration_decay": 1e-6,
+  "state_size": 64,
+  "reward_rol": "decrease",
+  "train_plan": [
+    {"players": [], "num_of_games": 1500,"arena_size": 300, "des": "decrease-reward"}
+  ]
+}

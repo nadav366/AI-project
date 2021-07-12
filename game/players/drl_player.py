@@ -17,4 +17,6 @@ class DRLPlayer(Player):
         self.predictions += 1
         drl_state = state.adjust_to_drl_player(self.id, state_size=self._net.input.shape.as_list()[1])  # self.crop_box(state.board, state.positions)
         values = self._net(drl_state[np.newaxis, ...], training=False)
+        print(values, end=', ')
+        print(np.argmax(values))
         return np.random.choice(np.flatnonzero(values == np.max(values)))

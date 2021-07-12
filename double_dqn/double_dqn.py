@@ -3,6 +3,7 @@ from tensorflow.keras.models import clone_model, load_model, model_from_json
 import numpy as np
 
 
+
 class DoubleDQN:
     def __init__(self, model, discount: float = 0.95):
         # , optimizer='adam', loss='mse', discount: float = 0.95):
@@ -77,7 +78,7 @@ class DoubleDQN:
         # reward + discount * Q(next_state, action), where Q(next_state, action) is evaluated using the Double
         # Q-learning algorithm. that is Q(next_state, action) = t_net(next_state)[argmax(q_net(next_state))]
 
-        self.q_net.fit(states, targets, epochs=10, verbose=0)
+        self.q_net.fit(states, targets, epochs=2, verbose=0)
 
     def set_model(self, model):
         self.q_net = model

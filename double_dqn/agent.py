@@ -58,9 +58,9 @@ class DQNAgent:
         self.net.fit(*batch)
 
     def train(self, episodes: int, train_dir, step_name,
-              max_actions: int = None, batch_size: int = 128,
-              checkpoint_rate=200, exploration_rate=None, state_size=32,
-              step_index=-1):
+              max_actions: int = None, batch_size: int = 64,
+              checkpoint_rate=300, exploration_rate=None, state_size=32,
+              step_index=-1, reward_rol='one-zero'):
         """
         Runs a training session for the agent
         :param episodes: number of episodes to train.
@@ -81,38 +81,40 @@ class DQNAgent:
         # start training
         for i in tqdm(range(episodes)):
             self.env.reset()  # Reset the environment for a new episode
-            state = self.env.get_state(state_size=state_size)  # Get starting state
+            state = self.env.get_state()  # Get starting state
+            step = 0
             ep_reward = 0
-            steps_buffer = []
-            while max_actions is None or len(steps_buffer) <= max_actions:
-
+            while max_actions is None or step <= max_actions:
+                step += 1
                 action = self.get_action(state, exploration_rate)
-                next_state, reward = self.env.step(action, state_size=state_size)
-                steps_buffer.append((state, action, next_state))
+                next_state, reward = self.env.step(action)
                 ep_reward += reward
+                # Add experience to memory
+                self.exp_rep.add(state, action, reward, next_state, self.env.get_legal_actions(state))
+                self.update_net(batch_size)  # Optimize the DoubleQ-net
                 if next_state is None:  # The action taken led to a  terminal state
                     break
-                state = next_state
-
-            for step, tup in enumerate(steps_buffer):
-                # Add experience to memory
-                state, action, next_state = tup
-                curr_reward = 1 if step < len(steps_buffer)-5 else 0
-                self.exp_rep.add(state, action, curr_reward, next_state, self.env.get_legal_actions(state))
-                self.update_net(batch_size)  # Optimize the DoubleQ-net
                 if (step % self.net_updating_rate) == 0:
                     # update target network
                     self.net.align_target_model()
 
+                state = next_state
+
             # Update total_rewards and num_actions to keep track of progress
             total_rewards.append(ep_reward)
-            num_actions.append(len(steps_buffer))
+            num_actions.append(step)
             # Update target network at the end of the episode
-            self.net.align_target_model()
+            self.net.align_target_model() # Optimize the DoubleQ-net
+            if (step % self.net_updating_rate) == 0:
+                # update target network
+                self.net.align_target_model()
+
             if self.exp_rep.get_num() > batch_size:
                 if (i % checkpoint_rate) == checkpoint_rate - 1:
                     save_path = self.save_data_of_cp(num_actions, step_name, train_dir, i)
-                    self.fights(i, save_path, step_name, train_dir, step_index)
+                    # self.fights(i, save_path, step_name, train_dir, step_index)
+            with open(os.path.join(train_dir, 'exploration_rate.txt'), 'w') as exp_rate:
+                exp_rate.writelines([str(exploration_rate)])
 
             # Update exploration rate
             exploration_rate = max(0.1, 0.01 + (exploration_rate - 0.01) * np.exp(-self.exploration_decay * (i + 1)))
@@ -126,17 +128,26 @@ class DQNAgent:
         return save_path
 
     def fights(self, i, save_path, step_name, train_dir, step_index):
-        res_rand = fight([save_path, 'r'])
-        rand_csv_path = os.path.join(train_dir, 'random.csv')
-        df = self.read_or_create(rand_csv_path)
-        df = df.append({'name': step_name, 'i': i, 'me': res_rand[0], 'rand_res': res_rand[1], 'step_index':step_index}, ignore_index=True)
-        df.to_csv(rand_csv_path, index=False)
+        try:
+            res_rand = fight([save_path, 'r'])
+            rand_csv_path = os.path.join(train_dir, 'random.csv')
+            df = self.read_or_create(rand_csv_path)
+            df = df.append({'name': step_name, 'i': i, 'me': res_rand[0], 'rand_res': res_rand[1], 'step_index': step_index}, ignore_index=True)
+            df.to_csv(rand_csv_path, index=False)
+        except Exception as e:
+            print('Exception in random fight')
+            print(e)
 
-        old_rand = fight([save_path, 'old'])
-        rand_csv_path = os.path.join(train_dir, 'old.csv')
-        df = self.read_or_create(rand_csv_path)
-        df = df.append({'name': step_name, 'i': i, 'me': old_rand[0], 'old_player': old_rand[1], 'step_index':step_index}, ignore_index=True)
-        df.to_csv(rand_csv_path, index=False)
+        try:
+            old_rand = fight([save_path, 'old'])
+            rand_csv_path = os.path.join(train_dir, 'old.csv')
+            df = self.read_or_create(rand_csv_path)
+            df = df.append({'name': step_name, 'i': i, 'me': old_rand[0], 'old_player': old_rand[1], 'step_index': step_index}, ignore_index=True)
+            df.to_csv(rand_csv_path, index=False)
+        except Exception as e:
+            print('Exception in old fight')
+            print(e)
+
 
     @staticmethod
     def read_or_create(path):

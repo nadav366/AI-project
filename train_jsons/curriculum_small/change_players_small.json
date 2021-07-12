@@ -1,4 +1,3 @@
-// TODO: change model parameters according to the results
 {
   "name": "curriculum_players_small",
   "conv_filters": [16,32],

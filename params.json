@@ -3,9 +3,9 @@
   "conv_filters": [16,32],
   "fc_sizes": [128,64],
   "dropout": 0.4,
-  "exploration_decay": 1e-6,
+  "exploration_decay": 1e-5,
   "state_size": 32,
   "train_plan": [
-    {"players": [], "num_of_games": 2500,"arena_size": 200, "des": "no_players_200"}
+    {"players": [], "num_of_games": 1400,"arena_size": 200, "des": "no_players_200"}
   ]
 }

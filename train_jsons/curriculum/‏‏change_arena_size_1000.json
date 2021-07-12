@@ -1,0 +1,16 @@
+{
+  "name": "curriculum-board-1000",
+  "conv_filters": [16,32,32],
+  "fc_sizes": [64,32],
+  "dropout": 0.4,
+  "exploration_decay": 1e-6,
+  "state_size": 64,
+  "reward_rol": "one-zero",
+  "train_plan": [
+    {"players": [], "num_of_games": 1000,"arena_size": 200, "des": "arena200"},
+    {"players": [], "num_of_games": 1000,"arena_size": 300, "des": "arena300"},
+    {"players": [], "num_of_games": 1000,"arena_size": 400, "des": "arena400"},
+    {"players": [], "num_of_games": 1000,"arena_size": 500, "des": "arena500"}
+
+  ]
+}
