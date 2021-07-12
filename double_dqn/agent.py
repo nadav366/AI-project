@@ -39,10 +39,11 @@ class DQNAgent:
            (only legal actions are considered)"""
 
         if np.random.random() >= eps:  # Exploitation
-            q = self.net.predict(state[np.newaxis, ...])
+            values = self.net.predict(state[np.newaxis, ...])
             # Calculate the Q-value of each action
-            probs = tf.math.softmax(q).numpy().flatten()
-            choice = np.random.choice(a=[0, 1, 2], p=probs)
+            # probs = tf.math.softmax(q).numpy().flatten()
+            # choice = np.random.choice(a=[0, 1, 2], p=probs)
+            choice = np.random.choice(np.flatnonzero(values == np.max(values)))
             return choice
         return np.random.choice(np.arange(3))
 
@@ -56,8 +57,7 @@ class DQNAgent:
 
     def train(self, episodes: int, train_dir, step_name,
               max_actions: int = None, batch_size: int = 64,
-              checkpoint_rate=300, exploration_rate=None, state_size=32,
-              step_index=-1, reward_rol='one-zero'):
+              checkpoint_rate=300, exploration_rate=None):
         """
         Runs a training session for the agent
         :param episodes: number of episodes to train.
@@ -85,9 +85,8 @@ class DQNAgent:
                 step += 1
                 action = self.get_action(state, exploration_rate)
                 next_state, reward = self.env.step(action)
-                ep_reward += reward
                 # Add experience to memory
-                self.exp_rep.add(state, action, reward, next_state)
+                self.exp_rep.add(state, action, next_state)
                 self.update_net(batch_size)  # Optimize the DoubleQ-net
                 if next_state is None:  # The action taken led to a  terminal state
                     break
@@ -98,7 +97,6 @@ class DQNAgent:
                 state = next_state
 
             # Update total_rewards and num_actions to keep track of progress
-            total_rewards.append(ep_reward)
             num_actions.append(step)
             # Update target network at the end of the episode
             self.net.align_target_model()  # Optimize the DoubleQ-net

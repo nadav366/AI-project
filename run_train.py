@@ -58,9 +58,7 @@ if __name__ == '__main__':
         num_actions, exploration_rate = trained_agent.train(step_params.num_of_games,
                                                             dir_train,
                                                             step_name=step_params.des,
-                                                            exploration_rate=(exploration_rate + 1.0) / 2,
-                                                            state_size=params.state_size,
-                                                            step_index=i)
+                                                            exploration_rate=(exploration_rate + 1.0) / 2)
         df = df.append(pd.DataFrame({
             'name': step_params.des,
             'num_actions': num_actions,

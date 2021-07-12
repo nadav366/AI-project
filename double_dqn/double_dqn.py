@@ -1,7 +1,6 @@
+import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import clone_model, load_model, model_from_json
-import numpy as np
-
 
 
 class DoubleDQN:
@@ -32,7 +31,7 @@ class DoubleDQN:
 
         return self.q_net.predict(tf.convert_to_tensor(states))
 
-    def fit(self, states: np.ndarray, actions: np.ndarray, next_states: np.ndarray, rewards: np.ndarray):
+    def fit(self, states: np.ndarray, actions: np.ndarray, next_states: np.ndarray):
         """
         Updates the net according to the Double Q-learning paradigm.
         :param states: A batch of states.
@@ -42,18 +41,14 @@ class DoubleDQN:
         :param rewards: A batch of rewards given after taking soecified actions from specified states and transitioning
                 to specified next_states.
         """
-        if self.q_net is None:
-            raise NotImplementedError('model was not initiated')
-        targets = self.predict(states)
+        targets = self.q_net.predict(states)
         # Create masks for separating terminal states from non terminal states.
         terminal_mask = np.array([next_state is None for next_state in list(next_states)])
         non_terminal_mask = np.logical_not(terminal_mask)
-        terminal_mask = np.where(terminal_mask)[0]
-        non_terminal_mask = np.where(non_terminal_mask)[0]
 
         # Update the expected sum of rewards in the terminal states to be just the current reward
         if terminal_mask.size > 0:
-            targets[terminal_mask, actions[terminal_mask]] = rewards[terminal_mask]
+            targets[terminal_mask, actions[terminal_mask]] = -1
 
         # Calculate the expected sum of rewards based on the target net and q net
         t = self.target_net.predict(np.asarray(list(next_states[non_terminal_mask])))
@@ -63,15 +58,14 @@ class DoubleDQN:
         # actions using the target net
         max_actions = np.argmax(q, axis=-1)
         estimated_values = t[np.arange(t.shape[0]), max_actions]
-        targets[non_terminal_mask, actions[non_terminal_mask]] = np.add(rewards[non_terminal_mask],
-                                                                        self.discount * estimated_values)
+        targets[non_terminal_mask, actions[non_terminal_mask]] = self.discount * estimated_values + 1
 
         # At this point the target is similar to the q-net prediction, except in the index corresponding to action
         # taken. In this index, the target value is just the reward if state is terminal, otherwise it is
         # reward + discount * Q(next_state, action), where Q(next_state, action) is evaluated using the Double
         # Q-learning algorithm. that is Q(next_state, action) = t_net(next_state)[argmax(q_net(next_state))]
 
-        self.q_net.fit(states, targets, epochs=2, verbose=0)
+        self.q_net.fit(states, targets, epochs=5, verbose=0)
 
     def set_model(self, model):
         self.q_net = model
