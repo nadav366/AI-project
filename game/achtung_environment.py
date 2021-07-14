@@ -84,7 +84,7 @@ class AchtungEnv(object):
         pressed_button_color = (119, 136, 153)
         rectangle_width = 110
         rectangle_height = 30
-        texts = ['Human - arrows', 'Human - WASD', 'DRL', 'old player', 'no_player']
+        texts = ['Human - arrows', 'Conv player', 'FC player', 'old player', 'no_player']
         pressed = np.zeros((5, 5))  # [[False for _ in range(4)] for __ in range(4)]
         pressed[4, ...] = 1
 
@@ -198,7 +198,7 @@ class AchtungEnv(object):
                         self.window.blit(buttons_text[i][j], buttons_rect[i][j])
 
                 pygame.display.update()
-        possible_players = ['ha', 'hw', 'd', 'old']
+        possible_players = ['ha', 'conv', 'd', 'old']
         players = [possible_players[i] for i in np.where(pressed.T[:, :-1])[1]]
         return players
 

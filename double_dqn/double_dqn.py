@@ -4,11 +4,11 @@
 #
 #
 # class DoubleDQN:
-#     def __init__(self, curr_conv_model, discount: float = 0.95):
+#     def __init__(self, final_conv_model, discount: float = 0.95):
 #         self.discount = discount
 #         self.q_net = None
 #         self.target_net = None
-#         self.set_model(curr_conv_model)
+#         self.set_model(final_conv_model)
 #
 #     def align_target_model(self):
 #         """
@@ -62,7 +62,7 @@
 #
 #         self.q_net.fit(states, targets, epochs=10, verbose=0)
 #
-#     def set_model(self, curr_conv_model):
-#         self.q_net = curr_conv_model
+#     def set_model(self, final_conv_model):
+#         self.q_net = final_conv_model
 #         self.target_net = clone_model(self.q_net)
 #         self.target_net.set_weights(self.q_net.get_weights())

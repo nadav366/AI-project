@@ -1,0 +1,18 @@
+{
+  "name": "curric_2_3r_4ro",
+  "model_type": "fc",
+  "fc_sizes": [64,32,16],
+  "dropout": 0.5,
+  "exploration_decay": 1e-6,
+  "state_size": 32,
+  "discount": 0.999,
+  "punishment": -100,
+  "checkpoint_rate": 300,
+  "train_plan": [
+    {"players": [], "num_of_games": 3000,"arena_size": 200, "first_not_random": true, "des": "s200"},
+    {"players": ["r"], "num_of_games": 3000,"arena_size": 300, "first_not_random": true, "des": "s300_r"},
+    {"players": ["r","old"], "num_of_games": 2000,"arena_size": 400, "first_not_random": false, "des": "s400_r_old_fix"},
+    {"players": ["r","old"], "num_of_games": 2000,"arena_size": 400, "first_not_random": false, "des": "s400_r_old"}
+  ]
+}
+
