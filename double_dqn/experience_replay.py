@@ -41,5 +41,4 @@ class ExperienceReplay:
         if self.get_num() > self.get_max():
             del self.transitions[0]
         """add single experience"""
-        assert state.shape[0] == state.shape[1] and state.shape[0] == self.state_size
         self.transitions.append(Transition(state, action, next_state))

@@ -1,0 +1,11 @@
+{
+  "name": "against_single_old_player",
+  "conv_filters": [16,32],
+  "fc_sizes": [128,64],
+  "dropout": 0.3,
+  "exploration_decay": 1e-6,
+  "state_size": 32,
+  "train_plan": [
+    {"players": ["old"], "num_of_games": 1000, "des": "play_against_single_old_player"}
+  ]
+}

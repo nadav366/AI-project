@@ -3,20 +3,18 @@ import os
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-from matplotlib import pyplot as plt
-from tensorflow.keras.models import load_model, model_from_json
+from tensorflow.keras.models import clone_model
 from tqdm import tqdm
 
-from double_dqn.double_dqn import DoubleDQN
 from double_dqn.experience_replay import ExperienceReplay
-from game.training_environment import TrainingEnv
-from evaluation import fight
+
 
 class DQNAgent:
     def __init__(self, env, model: tf.keras.models.Model,
                  net_update_rate: int = 10,
                  exploration_rate: float = 1.0,
-                 exploration_decay: float = 1e-6):
+                 exploration_decay: float = 1e-6,
+                 discount: float = 0.95):
         # set hyper parameters
         self.exploration_rate = exploration_rate
         self.exploration_decay = exploration_decay
@@ -32,14 +30,17 @@ class DQNAgent:
         self.exp_rep = ExperienceReplay(state_size=self.state_shape[0])
 
         # Deep Q Network
-        self.net = DoubleDQN(model)
+        self.discount = discount
+        self.q_net = None
+        self.target_net = None
+        self.set_model(model)
 
     def get_action(self, state: np.ndarray, eps) -> int:
         """Given a state returns a random action with probability eps, and argmax(q_net(state)) with probability 1-eps.
            (only legal actions are considered)"""
 
         if np.random.random() >= eps:  # Exploitation
-            values = self.net.predict(state[np.newaxis, ...])
+            values = self.q_net.predict(state[np.newaxis, ...])
             # Calculate the Q-value of each action
             # probs = tf.math.softmax(q).numpy().flatten()
             # choice = np.random.choice(a=[0, 1, 2], p=probs)
@@ -53,11 +54,11 @@ class DQNAgent:
         if self.exp_rep.get_num() < batch_size:
             return
         batch = self.exp_rep.get_batch(batch_size)
-        self.net.fit(*batch)
+        self.fit(*batch)
 
     def train(self, episodes: int, train_dir, step_name,
               max_actions: int = None, batch_size: int = 64,
-              checkpoint_rate=300, exploration_rate=None):
+              checkpoint_rate=300, exploration_rate=None, state_size=32):
         """
         Runs a training session for the agent
         :param episodes: number of episodes to train.
@@ -66,25 +67,18 @@ class DQNAgent:
         :return A tuple containing 2 lists. the first is a list of accumulated rewards for each training episode.
                 The second list contains the number of actions taken in each training episode.
         """
-        if self.net is None:
-            raise NotImplementedError('agent.train called before model was not initiated. Please set the agent\'s model'
-                                      ' using the set_model method. You can access the state and action shapes using '
-                                      'agent\'s methods \'get_state_shape\' and \'get_action_shape\'')
-
         # set hyper parameters
         exploration_rate = self.exploration_rate if exploration_rate is None else exploration_rate
-        total_rewards = []
         num_actions = []
         # start training
         for i in tqdm(range(episodes)):
             self.env.reset()  # Reset the environment for a new episode
-            state = self.env.get_state()  # Get starting state
+            state = self.env.get_state(state_size=state_size)  # Get starting state
             step = 0
-            ep_reward = 0
             while max_actions is None or step <= max_actions:
                 step += 1
                 action = self.get_action(state, exploration_rate)
-                next_state, reward = self.env.step(action)
+                next_state, reward = self.env.step(action, state_size=state_size)
                 # Add experience to memory
                 self.exp_rep.add(state, action, next_state)
                 self.update_net(batch_size)  # Optimize the DoubleQ-net
@@ -92,17 +86,17 @@ class DQNAgent:
                     break
                 if (step % self.net_updating_rate) == 0:
                     # update target network
-                    self.net.align_target_model()
+                    self.align_target_model()
 
                 state = next_state
 
             # Update total_rewards and num_actions to keep track of progress
             num_actions.append(step)
             # Update target network at the end of the episode
-            self.net.align_target_model()  # Optimize the DoubleQ-net
+            self.align_target_model()  # Optimize the DoubleQ-net
             if (step % self.net_updating_rate) == 0:
                 # update target network
-                self.net.align_target_model()
+                self.align_target_model()
 
             if self.exp_rep.get_num() > batch_size:
                 if (i % checkpoint_rate) == checkpoint_rate - 1:
@@ -118,78 +112,65 @@ class DQNAgent:
 
     def save_data_of_cp(self, num_actions, step_name, train_dir, i):
         save_path = os.path.join(train_dir, step_name, f'model_{i}')
-        self.save_model(save_path)
+        self.q_net.save(save_path)
         pd.DataFrame(num_actions).to_csv(os.path.join(train_dir, step_name, f'steps_{i}.csv'))
         return save_path
 
-    def fights(self, i, save_path, step_name, train_dir, step_index):
-        try:
-            res_rand = fight([save_path, 'r'])
-            rand_csv_path = os.path.join(train_dir, 'random.csv')
-            df = self.read_or_create(rand_csv_path)
-            df = df.append({'name': step_name, 'i': i, 'me': res_rand[0], 'rand_res': res_rand[1], 'step_index': step_index}, ignore_index=True)
-            df.to_csv(rand_csv_path, index=False)
-        except Exception as e:
-            print('Exception in random fight')
-            print(e)
-
-        try:
-            old_rand = fight([save_path, 'old'])
-            rand_csv_path = os.path.join(train_dir, 'old.csv')
-            df = self.read_or_create(rand_csv_path)
-            df = df.append({'name': step_name, 'i': i, 'me': old_rand[0], 'old_player': old_rand[1], 'step_index': step_index}, ignore_index=True)
-            df.to_csv(rand_csv_path, index=False)
-        except Exception as e:
-            print('Exception in old fight')
-            print(e)
 
 
-    @staticmethod
-    def read_or_create(path):
-        if os.path.exists(path):
-            df = pd.read_csv(path)
-        else:
-            df = pd.DataFrame()
-        return df
+    def align_target_model(self):
+        """
+        Sets the target net weights to be the same as the q-net.
+        """
+        self.target_net.set_weights(self.q_net.get_weights())
 
-    def get_state_shape(self):
-        return self.state_shape
+    def predict(self, states: np.ndarray) -> np.ndarray:
+        """
+        Given a state and legal actions that can be taken from that step, calculates the Q-values of (state, action) for
+        each action that can be taken (illegal actions are evaluated as 0). Also works for a batch of states.
+        :param states: a batch of states
+        :return: A numpy.ndarray representing the Estimated Q-values of all actions that can be taken from the specified
+                state
+        """
 
-    def get_action_shape(self):
-        return self.action_shape
+        return self.q_net.predict(tf.convert_to_tensor(states))
+
+    def fit(self, states: np.ndarray, actions: np.ndarray, next_states: np.ndarray):
+        """
+        Updates the net according to the Double Q-learning paradigm.
+        :param states: A batch of states.
+        :param actions: A batch of actions taken from the specified states.
+        :param next_states: the observed next-states after taking the specified actions from the specified states
+                (Expects None if the state was a terminal state).
+        """
+        targets = self.q_net.predict(states)
+        # Create masks for separating terminal states from non terminal states.
+        terminal_mask = np.array([next_state is None for next_state in list(next_states)])
+        non_terminal_mask = np.logical_not(terminal_mask)
+
+        # Update the expected sum of rewards in the terminal states to be just the current reward
+        if terminal_mask.size > 0:
+            targets[terminal_mask, actions[terminal_mask]] = \
+                targets[terminal_mask, actions[terminal_mask]] * self.discount - 10
+
+        # Calculate the expected sum of rewards based on the target net and q net
+        t = self.target_net.predict(np.asarray(list(next_states[non_terminal_mask])))
+        q = self.q_net.predict(np.asarray(list(next_states[non_terminal_mask])))
+
+        # Double-Q learning paradigm. We choose the actions based on the q_net evaluation, but evaluate those chosen
+        # actions using the target net
+        max_actions = np.argmax(q, axis=-1)
+        estimated_values = t[np.arange(t.shape[0]), max_actions]
+        targets[non_terminal_mask, actions[non_terminal_mask]] = self.discount * estimated_values + 1
+
+        # At this point the target is similar to the q-net prediction, except in the index corresponding to action
+        # taken. In this index, the target value is just the reward if state is terminal, otherwise it is
+        # reward + discount * Q(next_state, action), where Q(next_state, action) is evaluated using the Double
+        # Q-learning algorithm. that is Q(next_state, action) = t_net(next_state)[argmax(q_net(next_state))]
+
+        self.q_net.fit(states, targets, epochs=10, verbose=0)
 
     def set_model(self, model):
-        """ """
-        self.net = DoubleDQN(model)
-
-    # Handles saving\loading the model as explained here: https://www.tensorflow.org/guide/keras/save_and_serialize
-    def load_weights(self, path):
-        self.net.load_weights(path)
-
-    def save_weights(self, path):
-        self.net.save_weights(path)
-
-    def save_model(self, path):
-        if self.net is None:
-            raise NotImplementedError('agent.save_model was called before model was not initiated. Please set the '
-                                      'agent\'s model using the set_model method. You can access the state and action '
-                                      'shapes using agent\'s methods \'get_state_shape\' and \'get_action_shape\'')
-        self.net.save_model(path)
-
-    def load_model(self, path):
-        model = load_model(path)
-        self.set_model(model)
-
-    def to_json(self, **kwargs):
-        if self.net is None:
-            raise NotImplementedError('agent.to_json was called before model was not initiated. Please set the '
-                                      'agent\'s model using the set_model method. You can access the state and action '
-                                      'shapes using agent\'s methods \'get_state_shape\' and \'get_action_shape\'')
-        return self.net.to_json(**kwargs)
-
-    def from_json(self, json_config):
-        model = model_from_json(json_config)
-        self.set_model(model)
-
-
-
+        self.q_net = model
+        self.target_net = clone_model(self.q_net)
+        self.target_net.set_weights(self.q_net.get_weights())

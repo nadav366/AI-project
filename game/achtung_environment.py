@@ -43,7 +43,7 @@ class AchtungEnv(object):
         self.intro()
         self.loop()
 
-    def initialize(self, players):
+    def initialize(self, players, extract_features=True):
         self.circles = [CIRCLE_RADIUS_1, CIRCLE_RADIUS_2, CIRCLE_RADIUS_3, CIRCLE_RADIUS_4]
         self.player_radius = PLAYER_RADIUS
         self.head_radius = HEAD_RADIUS
@@ -51,7 +51,7 @@ class AchtungEnv(object):
         self.d_theta = D_THETA
         self.no_draw_time = NO_DRAW_TIME
         self.action_sampling_rate = ACTION_SAMPLING_RATE
-        self.players = self.initialize_players(players)
+        self.players = self.initialize_players(players, extract_features)
         self.reset()
 
     def entry(self):
@@ -500,10 +500,10 @@ class AchtungEnv(object):
                     self.window.blit(no_button, yes_rect)
                 pygame.display.update()
 
-    def initialize_players(self, players):
+    def initialize_players(self, players, extract_features):
         p = []
         for i in range(len(players)):
-            p.append(PlayerFactory.create_player(players[i], i, self))
+            p.append(PlayerFactory.create_player(players[i], i, self, extract_features))
         return p
 
     def initialize_angles(self):

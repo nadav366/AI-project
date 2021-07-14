@@ -9,10 +9,10 @@ class Player(object):
     d_theta = 0.09
     no_draw_time = 10
 
-    def __init__(self, player_id, game):
+    def __init__(self, player_id, game, extract_features):
         self.id = player_id
         self.game = game
-        self.extract_features = False
+        self.extract_features = extract_features
 
     @abc.abstractmethod
     def get_action(self, state):

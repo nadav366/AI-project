@@ -1,10 +1,11 @@
 {
-  "name": "small_arena",
+  "name": "arena_200_e6",
   "conv_filters": [16,32],
   "fc_sizes": [128,64],
   "dropout": 0.4,
-  "exploration_decay": 1e-5,
+  "exploration_decay": 1e-6,
   "state_size": 32,
+  "discount": 0.999,
   "train_plan": [
     {"players": [], "num_of_games": 1500,"arena_size": 200, "des": "no_players_200"}
   ]

@@ -74,7 +74,7 @@ class State:
         self._rgb_board[self.margin:self.margin + self.arena_size, self.margin:self.margin + self.arena_size, ...] = BLACK
         self._board[: self.arena_size, : self.arena_size] = BLACK_2D
 
-    def adjust_to_drl_player(self, player_id, state_size=32):
+    def adjust_to_drl_player(self, player_id, state_size=32, debug=False):
         if self.extract_features[player_id]:
             max_distance = 350
             num_angles = 25
@@ -84,13 +84,16 @@ class State:
             state_rep[:num_angles] = self.get_distance_to_obstacles(self._angles[player_id], self._positions[player_id],
                                                                     num_angles, max_distance)
             state_rep[num_angles: num_angles + features_per_player] = self.get_player_drl_features(player_id)
+            if debug:
+                print(state_rep)
+
             return state_rep
         else:
             N = state_size * 2
             crop_size_w = state_size // 2
             crop_size_h_under = 2
             crop_size_h_above = state_size - 2
-            down_sample = 4
+            down_sample = 5
 
             small_board = skimage.measure.block_reduce((self._board == 0).astype(int), (down_sample, down_sample), np.max)
             w, h = np.array(small_board.shape)
@@ -110,7 +113,7 @@ class State:
 
             croped_state = rotated_bord[y_top:y_bot, x_left:x_right]
 
-            if False:
+            if debug:
                 fig = plt.figure(figsize=(6, 3))
                 ax1, ax2 = fig.subplots(1, 2)
                 ax1.imshow(rotated_bord, cmap='gray')

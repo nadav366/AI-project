@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/game/state.py" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a292041c-b5db-421e-a187-1cb45b4f5adc" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/train_jsons/130721_try/arena_200_e5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_jsons/130721_try/arena_400_e6.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/double_dqn/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/double_dqn/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/double_dqn/agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/double_dqn/double_dqn.py" beforeDir="false" afterPath="$PROJECT_DIR$/double_dqn/double_dqn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/double_dqn/dqn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/double_dqn/dqn_env.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/double_dqn/experience_replay.py" beforeDir="false" afterPath="$PROJECT_DIR$/double_dqn/experience_replay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/double_dqn/requierments.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drl_trainer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evalute_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/evalute_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/achtung_environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/achtung_environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/players/drl_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/drl_player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/players/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/players/player_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/player_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/players/regular_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/regular_player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/state.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/training_environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/training_environment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/params.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/120712_try/decay_e-4.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/120712_try/decay_5e-4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/120712_try/decay_e-5.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/120712_try/decay_e-5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/120712_try/decay_e-6.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/120712_try/decay_e-6.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/120712_try/decay_e-7.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/120712_try/decay_e-7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/1800.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/1800.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/architecture.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/last_saved_weights.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/last_saved_weights.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/weights.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/weights.index" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,20 +44,95 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/project$evalute_model.coverage" NAME="evalute_model Coverage Results" MODIFIED="1626091444132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$evalute_model.coverage" NAME="evalute_model Coverage Results" MODIFIED="1626245626070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1625553721595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1626089776757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$run_train.coverage" NAME="run_train Coverage Results" MODIFIED="1626092328675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1626244878619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$run_train.coverage" NAME="run_train Coverage Results" MODIFIED="1626246196479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="agent.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+            <state relative-caret-position="298">
+              <caret line="150" column="69" lean-forward="true" selection-start-line="150" selection-start-column="69" selection-end-line="150" selection-end-column="69" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="random_player.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/players/random_player.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/players/player.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player_factory.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/players/player_factory.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run_train.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run_train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="params.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train_jsons/params.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="achtung_environment.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/achtung_environment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="state.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/state.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="91" selection-start-line="91" selection-end-line="91" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,89 +141,10 @@
       <file leaf-file-name="experience_replay.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/double_dqn/experience_replay.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+            <state relative-caret-position="309">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="state.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/state.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-254">
-              <caret line="105" column="19" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_train.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run_train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="60" column="105" selection-start-line="60" selection-start-column="105" selection-end-line="60" selection-end-column="105" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player_factory.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/players/player_factory.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="evalute_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evalute_model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="591">
-              <caret line="99" column="87" selection-start-line="99" selection-start-column="87" selection-end-line="99" selection-end-column="87" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <marker date="1626090183399" expanded="true" signature="4645:4719" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="double_dqn.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/double_dqn/double_dqn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-61">
-              <caret line="47" column="25" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="params.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/params.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="drl_player.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/players/drl_player.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="75" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,8 +153,8 @@
       <file leaf-file-name="training_environment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game/training_environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+            <state relative-caret-position="105">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#16#34#0" expanded="true" />
               </folding>
@@ -169,7 +187,13 @@
       <find>ARENA_HEIGHT</find>
       <find>makedirs</find>
       <find>get_action</find>
+      <find>exep</find>
+      <find>Exception</find>
+      <find>as_list</find>
+      <find>_model</find>
+      <find>save</find>
       <find>legal_actions</find>
+      <find>27</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,7 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/game/players/player.py" />
         <option value="$PROJECT_DIR$/train_in_gpu.sh" />
         <option value="$PROJECT_DIR$/drl_trainer.py" />
         <option value="$PROJECT_DIR$/train_jsons/against_single_old_player.json" />
@@ -188,7 +211,6 @@
         <option value="$PROJECT_DIR$/train_jsons/seq_no_players_random.json" />
         <option value="$PROJECT_DIR$/train_jsons/seq_no_players_random_old.json" />
         <option value="$PROJECT_DIR$/static/settings.py" />
-        <option value="$PROJECT_DIR$/evaluation.py" />
         <option value="$PROJECT_DIR$/train_jsons/basic_model_params/big-model_medium-state.json" />
         <option value="$PROJECT_DIR$/train_jsons/curriculum/big-model_big-state.json" />
         <option value="$PROJECT_DIR$/train_jsons/curriculum/decrease-reward.json" />
@@ -201,24 +223,33 @@
         <option value="$PROJECT_DIR$/train_jsons/curriculum/‏‏change_arena_size_1000.json" />
         <option value="$PROJECT_DIR$/train_jsons/curriculum/‏‏change_board_players_1000.json" />
         <option value="$PROJECT_DIR$/train_jsons/curriculum/‏‏change_players_1000.json" />
-        <option value="$PROJECT_DIR$/game/state.py" />
         <option value="$PROJECT_DIR$/train_jsons/120712_try/small-model_medium_state.json" />
-        <option value="$PROJECT_DIR$/game/players/player_factory.py" />
         <option value="$PROJECT_DIR$/train_jsons/120712_try/decay_e-4.json" />
-        <option value="$PROJECT_DIR$/game/achtung_environment.py" />
         <option value="$PROJECT_DIR$/double_dqn/dqn_env.py" />
         <option value="$PROJECT_DIR$/double_dqn/dqn.py" />
-        <option value="$PROJECT_DIR$/game/players/drl_player.py" />
-        <option value="$PROJECT_DIR$/evalute_model.py" />
         <option value="$PROJECT_DIR$/train_jsons/120712_try/decay_e-5.json" />
         <option value="$PROJECT_DIR$/train_jsons/120712_try/decay_e-6.json" />
         <option value="$PROJECT_DIR$/train_jsons/120712_try/decay_e-7.json" />
         <option value="$PROJECT_DIR$/train_jsons/120712_try/decay_5e-5.json" />
-        <option value="$PROJECT_DIR$/game/training_environment.py" />
+        <option value="$PROJECT_DIR$/train_jsons/130721_try/arena_400_e5.json" />
+        <option value="$PROJECT_DIR$/train_jsons/130721_try/arena_400_e6.json" />
+        <option value="$PROJECT_DIR$/train_jsons/130721_try/arena_500_e5.json" />
+        <option value="$PROJECT_DIR$/train_jsons/130721_try/arena_500_e6.json" />
+        <option value="$PROJECT_DIR$/evalute_model.py" />
         <option value="$PROJECT_DIR$/params.json" />
-        <option value="$PROJECT_DIR$/double_dqn/experience_replay.py" />
+        <option value="$PROJECT_DIR$/game/players/player.py" />
+        <option value="$PROJECT_DIR$/game/players/drl_player.py" />
+        <option value="$PROJECT_DIR$/game/players/regular_player.py" />
+        <option value="$PROJECT_DIR$/game/players/player_factory.py" />
+        <option value="$PROJECT_DIR$/game/achtung_environment.py" />
+        <option value="$PROJECT_DIR$/game/state.py" />
         <option value="$PROJECT_DIR$/double_dqn/double_dqn.py" />
+        <option value="$PROJECT_DIR$/evaluation.py" />
+        <option value="$PROJECT_DIR$/game/training_environment.py" />
         <option value="$PROJECT_DIR$/double_dqn/agent.py" />
+        <option value="$PROJECT_DIR$/evaluation/evalute_model.py" />
+        <option value="$PROJECT_DIR$/double_dqn/experience_replay.py" />
+        <option value="$PROJECT_DIR$/train_jsons/params.json" />
         <option value="$PROJECT_DIR$/run_train.py" />
       </list>
     </option>
@@ -233,10 +264,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1910" />
-    <option name="y" value="-10" />
-    <option name="width" value="1939" />
-    <option name="height" value="1049" />
+    <option name="x" value="1908" />
+    <option name="y" value="-12" />
+    <option name="width" value="1943" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -260,6 +291,11 @@
             <path>
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="evaluation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="game" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -272,12 +308,6 @@
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="train_jsons" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="train_jsons" type="462c0819:PsiDirectoryNode" />
-              <item name="120712_try" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -294,7 +324,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\train_jsons" />
+      <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\evaluation" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\train_jsons\130721_try" />
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\train_jsons\120712_try" />
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\double_dqn" />
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\train_jsons\curriculum" />
@@ -326,7 +361,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/evaluation.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\NADAV\.PyCharm2018.1\AI\project\evaluation\evaluation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -345,7 +380,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/evalute_model.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\NADAV\.PyCharm2018.1\AI\project\evaluation\evalute_model.py" />
       <option name="PARAMETERS" value="C:\Users\NADAV\.PyCharm2018.1\AI\project\run_trains" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -384,7 +419,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_train.py" />
-      <option name="PARAMETERS" value="params.json" />
+      <option name="PARAMETERS" value="train_jsons/params.json" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -555,7 +590,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626091001151</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="new agents">
+      <created>1626093714078</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1626093714078</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -567,16 +609,16 @@
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.20512821" />
-      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" weight="0.13390313" />
+      <window_info active="true" anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" visible="true" weight="0.41025642" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3291592" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19530201" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18053691" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32621083" />
-      <window_info anchor="right" id="SciView" order="5" weight="0.85167783" />
+      <window_info anchor="right" id="SciView" order="5" weight="0.13154362" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.09259259" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.48290598" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -591,20 +633,20 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19530201" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18053691" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" weight="0.46011397" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.15384616" />
+      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" weight="0.41025642" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.20512821" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32621083" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3291592" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="SciView" order="5" weight="0.85167783" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.55982906" />
+      <window_info anchor="right" id="SciView" order="5" weight="0.13154362" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.48290598" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -638,87 +680,18 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/evalute_model.py</url>
-          <line>87</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/double_dqn/double_dqn.py</url>
-          <line>68</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/game/players/drl_player.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/double_dqn/double_dqn.py</url>
-          <line>51</line>
-          <option name="timeStamp" value="26" />
+          <line>44</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="27" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="42" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/train_jsons/seq_no_players_random.json" />
-    <entry file="file://$PROJECT_DIR$/train_jsons/seq_no_players_random_old.json" />
-    <entry file="file://$PROJECT_DIR$/train_jsons/play_alone.json" />
-    <entry file="file://$PROJECT_DIR$/static/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="24" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/against_single_old_player.json" />
-    <entry file="file://$PROJECT_DIR$/train_jsons/curriculum/change_players.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/curriculum/change_board_players.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/curriculum/change_arena_size.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/IDL/Lib/site-packages/pandas/core/groupby/grouper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="785" selection-start-line="785" selection-end-line="785" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/players/regular_player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/IDL/Lib/site-packages/pandas/core/indexes/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61600">
-          <caret line="2896" selection-start-line="2896" selection-end-line="2896" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/actions.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/curriculum_small/change_arena_size_small.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/train_jsons/basic_model_params/big-model_medium-state.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -852,59 +825,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/double_dqn/dqn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="45" column="35" lean-forward="true" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../system/python_stubs/1672923480/numpy/random/mtrand.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="257" column="4" selection-start-line="257" selection-start-column="4" selection-end-line="257" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/achtung_environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="278" selection-start-line="278" selection-end-line="278" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/double_dqn/dqn_env.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/players/player_factory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evalute_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="99" column="87" selection-start-line="99" selection-start-column="87" selection-end-line="99" selection-end-column="87" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1626090183399" expanded="true" signature="4645:4719" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/players/drl_player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -936,69 +860,227 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/training_environment.py">
+    <entry file="file://$USER_HOME$/anaconda3/envs/IDL/Lib/site-packages/tensorflow/python/keras/layers/pooling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        <state relative-caret-position="192">
+          <caret line="451" column="6" selection-start-line="451" selection-start-column="6" selection-end-line="451" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_jsons/130721_try/arena_400_e5.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="20" selection-start-line="7" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_jsons/130721_try/arena_400_e6.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_jsons/130721_try/arena_200_e5.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
+          <caret line="9" column="82" selection-start-line="9" selection-start-column="82" selection-end-line="9" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_jsons/130721_try/arena_200_e6.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
+          <caret line="9" column="82" selection-start-line="9" selection-start-column="82" selection-end-line="9" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/double_dqn/README.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drl_trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="28" selection-start-line="28" selection-end-line="39" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/players/regular_player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/players/drl_player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
           <folding>
-            <element signature="e#16#34#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/state.py">
+    <entry file="file://$PROJECT_DIR$/double_dqn/dqn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-254">
-          <caret line="105" column="19" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="19" />
+        <state relative-caret-position="483">
+          <caret line="45" column="35" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/double_dqn/dqn_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/double_dqn/experience_replay.py">
+    <entry file="file://$PROJECT_DIR$/evaluation/evaluation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        <state relative-caret-position="198">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
+    <entry file="file://$PROJECT_DIR$/static/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+        <state relative-caret-position="86">
+          <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_train.py">
+    <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="60" column="105" selection-start-line="60" selection-start-column="105" selection-end-line="60" selection-end-column="105" />
+        <state relative-caret-position="-1094">
+          <caret line="58" column="40" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="40" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1626245798031" expanded="true" signature="4292:4366" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/params.json">
+    <entry file="file://$USER_HOME$/anaconda3/envs/IDL/Lib/site-packages/tensorflow/python/framework/func_graph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="27" />
+        <state relative-caret-position="146">
+          <caret line="974" selection-start-line="974" selection-end-line="974" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/double_dqn/double_dqn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61">
-          <caret line="47" column="25" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="25" />
+        <state relative-caret-position="264">
+          <caret line="12" column="35" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/double_dqn/experience_replay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/players/random_player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/players/player_factory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/achtung_environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/training_environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#16#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/players/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="150" column="69" lean-forward="true" selection-start-line="150" selection-start-column="69" selection-end-line="150" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_jsons/params.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>

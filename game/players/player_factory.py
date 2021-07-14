@@ -1,7 +1,4 @@
-import json
 import tensorflow as tf
-import pygame
-from tensorflow.keras.models import model_from_json
 
 from game.players.drl_player import DRLPlayer
 from game.players.random_player import RandomPlayer
@@ -17,21 +14,19 @@ MIN_MAX_DEPTH = 3
 
 class PlayerFactory:
     @staticmethod
-    def create_player(player_type, id, game):
+    def create_player(player_type, id, game, extract_features):
         if player_type == 'ha':
             return RegularHumanPlayer(id, game, ARROWS_RIGHT, ARROWS_LEFT)
         elif player_type == 'hw':
             return RegularHumanPlayer(id, game, WASD_RIGHT, WASD_LEFT)
         elif player_type == 'old':
-            with open(FC_ARCHITECTURE_PATH, 'r') as json_file:
-                config = json.load(json_file)
-                model = model_from_json(config)
-                model.load_weights(FC_WEIGHT_PATH).expect_partial()
+            model = tf.keras.models.load_model(os.path.join('models', 'old_fc_model_save'))
             return DRLPlayer(id, game, model, extract_features=True)
         elif player_type == 'r':
-            return RandomPlayer(id, game)
+            return RandomPlayer(id, game, extract_features=extract_features)
         else:
             if player_type == 'd':
-                player_type = r"C:\Users\NADAV\.PyCharm2018.1\AI\project\model"
+                player_type = os.path.join('models', 'curr_conv_model')
             model = tf.keras.models.load_model(player_type)
-            return DRLPlayer(id, game, model)
+            extract_features = len(model.input.shape.as_list()) == 2
+            return DRLPlayer(id, game, model, extract_features=extract_features)

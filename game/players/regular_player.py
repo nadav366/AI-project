@@ -5,7 +5,7 @@ from game.players.player import Player
 class RegularHumanPlayer(Player):
 
     def __init__(self, player_id, game, right, left):
-        Player.__init__(self, player_id, game)
+        Player.__init__(self, player_id, game, extract_features=True)
         self.right = right
         self.left = left
         self.temp = 0

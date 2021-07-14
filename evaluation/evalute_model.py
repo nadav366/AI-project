@@ -1,17 +1,9 @@
 import os
 import sys
-
+import shutil
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
-
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# RUN_DIRS_ROOT = os.path.join(BASE_DIR, 'run_dirs')
-# RANDOM_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/random.csv')
-# ALL_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/df_all.csv')
-# OLD_CSV = os.path.join(RUN_DIRS_ROOT, 'play_alone_030721_222033/old.csv')
-# RANDOM_CSV = 'C://Users/guykatz/PycharmProjects/AchtungDeKurve/AI-project/run_dirs/play_alone_030721_222033/random.csv'
 
 
 # def read_all_file():
@@ -40,6 +32,7 @@ def plot_graph_for_all_train(dir_path):
             one_stage_name = [f for f in os.listdir(dir_path) if 'steps' in f][0]
         except:
             print(dir_path)
+            # shutil.rmtree(dir_path)
             return
         one_stage_path = os.path.join(dir_path, one_stage_name)
         df = pd.read_csv(one_stage_path)
@@ -62,14 +55,7 @@ def plot_graph_for_all_train(dir_path):
         y_smooth = np.convolve(num_actions_arr[i], np.ones((N,)) / N, mode='valid')
         x_vals = last_step_len + (np.arange(len(y_smooth)) + N // 2)
         plt.plot(x_vals, y_smooth, label=name_arr[i][0])
-        min_diss = abs(y_all.min() - y_smooth.min())
-        max_diss = abs(y_all.max() - y_smooth.max())
-        if max_diss > min_diss:
-            y_pos = np.random.randint(y_all.max() * 0.8, y_all.max())
-        elif max_diss < min_diss:
-            y_pos = np.random.randint(y_all.min(), y_all.min() * 1.3)
-        else:
-            y_pos = np.random.randint(y_all.min(), y_all.max())
+        y_pos = get_y_text_pos(y_all, y_smooth)
         plt.text((last_step_len + x_vals.mean()) // 2, y_pos, name_arr[i][0], bbox=props)
         last_step_len += len(num_actions_arr[i])
         if i + 1 != steps_arr.size:
@@ -77,10 +63,22 @@ def plot_graph_for_all_train(dir_path):
 
     plt.xlabel('steps')
     plt.ylabel('actions')
-    plt.title(f'Model Evaluation with moving average\n For: {os.path.basename(dir_path)}')
-    plt.legend(bbox_to_anchor=(1.05, 1), loc=0, borderaxespad=0.)
+    plt.title(f'Model Evaluation, moving average on {N} games\n For: {os.path.basename(dir_path)}')
+    # plt.legend(bbox_to_anchor=(1.05, 1), loc=0, borderaxespad=0.)
     plt.savefig(os.path.join(dir_path, 'actions.png'))
     plt.close()
+
+
+def get_y_text_pos(y_all, y_smooth):
+    min_diss = abs(y_all.min() - y_smooth.min())
+    max_diss = abs(y_all.max() - y_smooth.max())
+    if max_diss > min_diss:
+        y_pos = np.random.randint(y_all.max() * 0.8, y_all.max())
+    elif max_diss < min_diss:
+        y_pos = np.random.randint(y_all.min(), y_all.min() * 1.3)
+    else:
+        y_pos = np.random.randint(y_all.min(), y_all.max())
+    return y_pos
 
 
 def plot_graph_for_comparing(compare_path):
