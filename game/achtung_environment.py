@@ -12,10 +12,11 @@ from static.settings import *
 class AchtungEnv(object):
     colors = [PURPLE, BLUE, RED, YELLOW]
 
-    def __init__(self, training_mode=False, arena_size=500):
+    def __init__(self, training_mode=False, arena_size=500, first_not_random=False):
         self.training_mode = training_mode
         self.arena_size = arena_size
         self.arena_shape = (arena_size, arena_size, 3)
+        self.first_not_random = first_not_random
 
     def reset(self):
         self.colors = self.initialize_colors()
@@ -507,14 +508,20 @@ class AchtungEnv(object):
         return p
 
     def initialize_angles(self):
-        return np.random.uniform(0, 2 * np.pi, len(self.players))
+        angles = np.random.uniform(0, 2 * np.pi, len(self.players))
+        if self.first_not_random:
+            angles[0] = 0
+        return angles
 
     def initialize_positions(self):
         width_margin = self.arena_size // 5
         height_margin = self.arena_size // 5
         xx = np.random.uniform(width_margin, self.arena_size - width_margin, len(self.players))
         yy = np.random.uniform(height_margin, self.arena_size - height_margin, len(self.players))
-        return [(xx[i], yy[i]) for i in range(len(self.players))]
+        pos = [(xx[i], yy[i]) for i in range(len(self.players))]
+        if self.first_not_random:
+            pos[0] = (self.arena_size//2, self.arena_size//2)
+        return pos
 
     def initialize_colors(self):
         return AchtungEnv.colors[:len(self.players)]

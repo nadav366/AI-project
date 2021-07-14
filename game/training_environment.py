@@ -6,8 +6,8 @@ from game.players.drl_player import DRLPlayer
 
 
 class TrainingEnv(AchtungEnv):
-    def __init__(self, players, training_mode, arena_size, extract_features=True):
-        AchtungEnv.__init__(self, training_mode, arena_size=arena_size)
+    def __init__(self, players, training_mode, arena_size, extract_features=True, **kwargs):
+        AchtungEnv.__init__(self, training_mode, arena_size=arena_size, **kwargs)
         self.initialize(players, extract_features)
 
     def get_state(self, player_id=0, state_size=32):

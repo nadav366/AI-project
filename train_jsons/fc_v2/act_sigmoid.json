@@ -1,0 +1,14 @@
+{
+  "name": "act_sigmoid",
+  "model_type": "fc",
+  "conv_filters": [16,32],
+  "fc_sizes": [64,32,16],
+  "dropout": 0.4,
+  "exploration_decay": 1e-6,
+  "state_size": 32,
+  "discount": 0.95,
+  "activation": "sigmoid",
+  "train_plan": [
+    {"players": [], "num_of_games": 5000,"arena_size": 200, "des": ""}
+  ]
+}

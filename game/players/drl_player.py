@@ -19,7 +19,7 @@ class DRLPlayer(Player):
         # probs = tf.math.softmax(values).numpy().flatten()
         # choice = np.random.choice(a=[0, 1, 2], p=probs)
         choice = np.random.choice(np.flatnonzero(values == np.max(values)))
-        print(values, end=', ')
-        print(choice)
+        # print(values, end=', ')
+        # print(choice)
         return choice
 

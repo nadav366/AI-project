@@ -1,0 +1,15 @@
+{
+  "name": "s200_dis095_pun0_fix",
+  "model_type": "conv",
+  "conv_filters": [16,32],
+  "fc_sizes": [64,32,16],
+  "dropout": 0.5,
+  "exploration_decay": 1e-6,
+  "state_size": 32,
+  "discount": 0.95,
+  "punishment": 0,
+  "first_not_random": true,
+  "train_plan": [
+    {"players": [], "num_of_games": 3000,"arena_size": 200, "des": ""}
+  ]
+}

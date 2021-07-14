@@ -1,0 +1,13 @@
+{
+  "name": "s200_dis099_exp1e6",
+  "model_type": "fc",
+  "conv_filters": [16,32],
+  "fc_sizes": [128,64,32,32],
+  "dropout": 0.4,
+  "exploration_decay": 1e-6,
+  "state_size": 32,
+  "discount": 0.99,
+  "train_plan": [
+    {"players": [], "num_of_games": 5000,"arena_size": 200, "des": ""}
+  ]
+}

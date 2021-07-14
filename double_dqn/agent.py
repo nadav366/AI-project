@@ -1,4 +1,5 @@
 import os
+from threading import Thread
 
 import numpy as np
 import pandas as pd
@@ -7,18 +8,23 @@ from tensorflow.keras.models import clone_model
 from tqdm import tqdm
 
 from double_dqn.experience_replay import ExperienceReplay
+from evaluation.evaluation_utils import fights
 
 
 class DQNAgent:
     def __init__(self, env, model: tf.keras.models.Model,
-                 net_update_rate: int = 10,
+                 net_update_rate: int = 25,
                  exploration_rate: float = 1.0,
                  exploration_decay: float = 1e-6,
-                 discount: float = 0.95):
+                 discount: float = 0.95,
+                 punishment: float = 0.0,
+                 batch_size: int = 128):
         # set hyper parameters
         self.exploration_rate = exploration_rate
         self.exploration_decay = exploration_decay
         self.net_updating_rate = net_update_rate
+        self.punishment = punishment
+        self.batch_size = batch_size
 
         # set environment
         self.env = env
@@ -48,16 +54,16 @@ class DQNAgent:
             return choice
         return np.random.choice(np.arange(3))
 
-    def update_net(self, batch_size: int):
+    def update_net(self):
         """ if there are more than batch_size experiences, Optimizes the network's weights using the Double-Q-learning
          algorithm with a batch of experiences, else returns"""
-        if self.exp_rep.get_num() < batch_size:
+        if self.exp_rep.get_num() < self.batch_size:
             return
-        batch = self.exp_rep.get_batch(batch_size)
+        batch = self.exp_rep.get_batch(self.batch_size)
         self.fit(*batch)
 
     def train(self, episodes: int, train_dir, step_name,
-              max_actions: int = None, batch_size: int = 64,
+              max_actions: int = None, step_index=-1,
               checkpoint_rate=300, exploration_rate=None, state_size=32):
         """
         Runs a training session for the agent
@@ -81,7 +87,7 @@ class DQNAgent:
                 next_state, reward = self.env.step(action, state_size=state_size)
                 # Add experience to memory
                 self.exp_rep.add(state, action, next_state)
-                self.update_net(batch_size)  # Optimize the DoubleQ-net
+                self.update_net()  # Optimize the DoubleQ-net
                 if next_state is None:  # The action taken led to a  terminal state
                     break
                 if (step % self.net_updating_rate) == 0:
@@ -98,10 +104,11 @@ class DQNAgent:
                 # update target network
                 self.align_target_model()
 
-            if self.exp_rep.get_num() > batch_size:
+            if self.exp_rep.get_num() > self.batch_size:
                 if (i % checkpoint_rate) == checkpoint_rate - 1:
                     save_path = self.save_data_of_cp(num_actions, step_name, train_dir, i)
-                    # self.fights(i, save_path, step_name, train_dir, step_index)
+                    background_thread = Thread(target=fights, args=(i, save_path, step_name, train_dir, step_index))
+                    background_thread.start()
             with open(os.path.join(train_dir, 'exploration_rate.txt'), 'a') as exp_rate:
                 exp_rate.writelines([str(exploration_rate) + '\n'])
 
@@ -115,8 +122,6 @@ class DQNAgent:
         self.q_net.save(save_path)
         pd.DataFrame(num_actions).to_csv(os.path.join(train_dir, step_name, f'steps_{i}.csv'))
         return save_path
-
-
 
     def align_target_model(self):
         """
@@ -150,8 +155,7 @@ class DQNAgent:
 
         # Update the expected sum of rewards in the terminal states to be just the current reward
         if terminal_mask.size > 0:
-            targets[terminal_mask, actions[terminal_mask]] = \
-                targets[terminal_mask, actions[terminal_mask]] * self.discount - 10
+            targets[terminal_mask, actions[terminal_mask]] = self.punishment
 
         # Calculate the expected sum of rewards based on the target net and q net
         t = self.target_net.predict(np.asarray(list(next_states[non_terminal_mask])))
@@ -168,7 +172,7 @@ class DQNAgent:
         # reward + discount * Q(next_state, action), where Q(next_state, action) is evaluated using the Double
         # Q-learning algorithm. that is Q(next_state, action) = t_net(next_state)[argmax(q_net(next_state))]
 
-        self.q_net.fit(states, targets, epochs=10, verbose=0)
+        self.q_net.fit(states, targets, epochs=5, verbose=0, batch_size=self.batch_size)
 
     def set_model(self, model):
         self.q_net = model

@@ -1,0 +1,14 @@
+{
+  "name": "s300_dis0999_pun-1",
+  "model_type": "fc",
+  "conv_filters": [16,32],
+  "fc_sizes": [64,32,16],
+  "dropout": 0.5,
+  "exploration_decay": 1e-6,
+  "state_size": 32,
+  "discount": 0.999,
+  "punishment": -1,
+  "train_plan": [
+    {"players": [], "num_of_games": 3000,"arena_size": 300, "des": ""}
+  ]
+}

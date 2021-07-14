@@ -29,7 +29,7 @@ def plot_graph_for_all_train(dir_path):
         df = pd.read_csv(all_df_path)
     else:
         try:
-            one_stage_name = [f for f in os.listdir(dir_path) if 'steps' in f][0]
+            one_stage_name = sorted([f for f in os.listdir(dir_path) if 'steps' in f])[-1]
         except:
             print(dir_path)
             # shutil.rmtree(dir_path)
@@ -46,7 +46,7 @@ def plot_graph_for_all_train(dir_path):
     num_actions_arr = groups.num_actions.apply(list)
     name_arr = groups.name.unique()
     steps_arr = groups.step.apply(list)
-    N = 50
+    N = 100
     last_step_len = 0
     y_all = np.convolve(df.num_actions, np.ones((N,)) / N, mode='valid')
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
@@ -114,6 +114,8 @@ def plot_graph_for_comparing(compare_path):
 
 def main(root_dir):
     for run_dir in os.listdir(root_dir):
+        if 'old' in run_dir:
+            continue
         run_path = os.path.join(root_dir, run_dir)
         # plot_graph_for_comparing(os.path.join(run_path, 'random.csv'))
         # plot_graph_for_comparing(os.path.join(run_path, 'old.csv'))

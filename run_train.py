@@ -33,7 +33,11 @@ def get_fc_model(params: SimpleNamespace):
         x = BatchNormalization()(x)
         x = Dropout(params.dropout)(x)
 
-    final = Dense(n_actions)(x)
+    activation = getattr(params, 'activation', None)
+    if activation is None:
+        final = Dense(n_actions)(x)
+    else:
+        final = Dense(n_actions, activation=activation)(x)
     model = Model(inputs=input_tensor, outputs=final)
     model.compile(optimizer='adam', loss='mse')
     return model, True
@@ -54,7 +58,11 @@ def get_conv_model(params: SimpleNamespace):
         x = BatchNormalization()(x)
         x = Dropout(params.dropout)(x)
 
-    final = Dense(n_actions)(x)
+    activation = getattr(params, 'activation', None)
+    if activation is None:
+        final = Dense(n_actions)(x)
+    else:
+        final = Dense(n_actions, activation=activation)(x)
     model = Model(inputs=input_tensor, outputs=final)
     model.compile(optimizer='adam', loss='mse')
     return model, False
@@ -62,8 +70,9 @@ def get_conv_model(params: SimpleNamespace):
 
 if __name__ == '__main__':
     with open(sys.argv[1], 'r') as f:
-        params = json.load(f)
-    params = SimpleNamespace(**params)
+        params_json = json.load(f)
+
+    params = SimpleNamespace(**params_json)
     time = datetime.datetime.now().strftime("%d%m%y_%H%M%S")
 
     curr_dir_train = getattr(params, 'curr_dir_train', None)
@@ -82,19 +91,30 @@ if __name__ == '__main__':
             exploration_rate = float(f.readlines()[-1])
         df = pd.read_csv(os.path.join(curr_dir_train, 'df_all.csv'))
 
+    print(dir_train)
+    with open(os.path.join(dir_train, 'params.json'), 'w') as f:
+        json.dump(params_json, f)
     for step_params in params.train_plan:
         step_params = SimpleNamespace(**step_params)
         print(f'start {step_params.des}')
         players = ['r'] + step_params.players
-        game = TrainingEnv(players, training_mode=True, arena_size=step_params.arena_size, extract_features=extract_features)
-        trained_agent = DQNAgent(game, model, exploration_decay=params.exploration_decay, discount=params.discount)
+        game = TrainingEnv(players, training_mode=True,
+                           arena_size=step_params.arena_size,
+                           extract_features=extract_features,
+                           first_not_random=getattr(step_params, 'first_not_random', False))
+        trained_agent = DQNAgent(game, model,
+                                 exploration_decay=params.exploration_decay,
+                                 discount=params.discount,
+                                 punishment=getattr(params, 'punishment', 0))
+        step_index = df['step_index'].max() + 1 if len(df) > 0 else 0
         num_actions, exploration_rate = trained_agent.train(step_params.num_of_games,
                                                             dir_train,
                                                             step_name=step_params.des,
                                                             exploration_rate=(exploration_rate + 1.0) / 2.0,
-                                                            state_size=params.state_size)
+                                                            state_size=params.state_size,
+                                                            step_index=step_index,
+                                                            checkpoint_rate=params.checkpoint_rate)
 
-        step_index = df['step_index'].max() + 1 if len(df) > 0 else 0
         df = df.append(pd.DataFrame({
             'name': step_params.des,
             'num_actions': num_actions,
