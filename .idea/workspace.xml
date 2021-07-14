@@ -5,36 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a292041c-b5db-421e-a187-1cb45b4f5adc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/train_jsons/130721_try/arena_200_e5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_jsons/130721_try/arena_400_e6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start_work.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/double_dqn/agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/double_dqn.py" beforeDir="false" afterPath="$PROJECT_DIR$/double_dqn/double_dqn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/dqn.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/dqn_env.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/experience_replay.py" beforeDir="false" afterPath="$PROJECT_DIR$/double_dqn/experience_replay.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/requierments.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drl_trainer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evalute_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/evalute_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/achtung_environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/achtung_environment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/players/drl_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/drl_player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/players/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/players/player_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/player_factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/players/regular_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/regular_player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/training_environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/training_environment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/params.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/1800.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/1800.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/architecture.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/last_saved_weights.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/last_saved_weights.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/weights.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/models/fc_model/chosen_agent/weights.index" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="298">
-              <caret line="150" column="69" lean-forward="true" selection-start-line="150" selection-start-column="69" selection-end-line="150" selection-end-column="69" />
+              <caret line="150" column="69" selection-start-line="150" selection-start-column="69" selection-end-line="150" selection-end-column="69" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -87,19 +59,28 @@
       <file leaf-file-name="player_factory.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game/players/player_factory.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="163">
+              <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run_train.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="start_work.sh" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/start_work.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run_train.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
+            <state relative-caret-position="141">
               <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -133,18 +114,6 @@
               <caret line="91" selection-start-line="91" selection-end-line="91" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="experience_replay.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/double_dqn/experience_replay.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -240,7 +209,6 @@
         <option value="$PROJECT_DIR$/game/players/player.py" />
         <option value="$PROJECT_DIR$/game/players/drl_player.py" />
         <option value="$PROJECT_DIR$/game/players/regular_player.py" />
-        <option value="$PROJECT_DIR$/game/players/player_factory.py" />
         <option value="$PROJECT_DIR$/game/achtung_environment.py" />
         <option value="$PROJECT_DIR$/game/state.py" />
         <option value="$PROJECT_DIR$/double_dqn/double_dqn.py" />
@@ -251,6 +219,8 @@
         <option value="$PROJECT_DIR$/double_dqn/experience_replay.py" />
         <option value="$PROJECT_DIR$/train_jsons/params.json" />
         <option value="$PROJECT_DIR$/run_train.py" />
+        <option value="$PROJECT_DIR$/game/players/player_factory.py" />
+        <option value="$PROJECT_DIR$/start_work.sh" />
       </list>
     </option>
   </component>
@@ -283,32 +253,6 @@
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="double_dqn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="evaluation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="players" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="train_jsons" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -325,6 +269,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\models" />
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\train_jsons" />
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\evaluation" />
     </key>
@@ -597,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626093714078</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="add train of features">
+      <created>1626246447293</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1626246447293</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -609,12 +561,12 @@
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.20512821" />
-      <window_info active="true" anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" visible="true" weight="0.41025642" />
+      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" weight="0.35754985" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3291592" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18053691" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18053691" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32621083" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32621083" />
       <window_info anchor="right" id="SciView" order="5" weight="0.13154362" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -674,7 +626,8 @@
     <MESSAGE value="eval model" />
     <MESSAGE value="all" />
     <MESSAGE value="new agents" />
-    <option name="LAST_COMMIT_MESSAGE" value="new agents" />
+    <MESSAGE value="add train of features" />
+    <option name="LAST_COMMIT_MESSAGE" value="add train of features" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -692,13 +645,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/train_jsons/basic_model_params/big-model_medium-state.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train_jsons/basic_model_params/big-model_small-state.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -1014,16 +960,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/players/player_factory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game/achtung_environment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1051,7 +987,7 @@
     <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
-          <caret line="150" column="69" lean-forward="true" selection-start-line="150" selection-start-column="69" selection-end-line="150" selection-end-column="69" />
+          <caret line="150" column="69" selection-start-line="150" selection-start-column="69" selection-end-line="150" selection-end-column="69" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -1077,11 +1013,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
+        <state relative-caret-position="141">
           <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/players/player_factory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start_work.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
