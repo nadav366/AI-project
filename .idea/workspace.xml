@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a292041c-b5db-421e-a187-1cb45b4f5adc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/gitignore.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluation/evaluation_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/evaluation_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/double_dqn/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/double_dqn/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation/evaluation_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +17,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/project$evalute_model.coverage" NAME="evalute_model Coverage Results" MODIFIED="1626340960298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$evalute_model.coverage" NAME="evalute_model Coverage Results" MODIFIED="1626357341604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1625553721595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$evaluation_utils.coverage" NAME="evaluation_utils Coverage Results" MODIFIED="1626357528639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/evaluation" />
     <SUITE FILE_PATH="coverage/project$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1626292006478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$run_train.coverage" NAME="run_train Coverage Results" MODIFIED="1626292907231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -28,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1781">
-              <caret line="81" column="35" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
+              <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -36,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluation_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluation/evaluation_utils.py">
+      <file leaf-file-name="evaluation_utils.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/evaluation_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="12">
+              <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -48,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evalute_model.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="evalute_model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1397">
@@ -103,7 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/train_jsons/fc_v1/s200_dis090_exp1e6.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v1/s300_dis095_exp1e6.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v1/s200_dis095_exp1e5.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v1/s200_dis095_exp1e7.json" />
@@ -154,6 +154,7 @@
         <option value="$PROJECT_DIR$/train_jsons/fc_v8/curric_size_pR_dis0999_pun-100.json" />
         <option value="$PROJECT_DIR$/evaluation/evalute_model.py" />
         <option value="$PROJECT_DIR$/evaluation/evaluation_utils.py" />
+        <option value="$PROJECT_DIR$/evaluation_utils.py" />
       </list>
     </option>
   </component>
@@ -223,6 +224,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project" />
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\models" />
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\train_jsons" />
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\evaluation" />
@@ -359,7 +361,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.evalute_model">
+  <component name="RunManager" selected="Python.evaluation_utils">
     <configuration name="evaluation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -373,8 +375,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\NADAV\.PyCharm2018.1\AI\project\evaluation\evaluation_utils.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\NADAV\.PyCharm2018.1\AI\project\evaluation_utils.py" />
       <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="evaluation_utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/evaluation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/evaluation_utils.py" />
+      <option name="PARAMETERS" value="C:\Users\NADAV\.PyCharm2018.1\AI\project\run_trains" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -441,9 +462,11 @@
       <item itemvalue="Python.run_train" />
       <item itemvalue="Python.evaluation" />
       <item itemvalue="Python.evalute_model" />
+      <item itemvalue="Python.evaluation_utils" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.evaluation_utils" />
         <item itemvalue="Python.evalute_model" />
         <item itemvalue="Python.run_train" />
         <item itemvalue="Python.run_game" />
@@ -651,7 +674,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626356571063</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="merge">
+      <created>1626356981095</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1626356981095</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -663,9 +693,9 @@
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.20512821" />
-      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" weight="0.3133903" />
+      <window_info active="true" anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" visible="true" weight="0.3133903" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32905984" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18053691" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18053691" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32621083" />
@@ -734,7 +764,8 @@
     <MESSAGE value="end of day2" />
     <MESSAGE value="fix bug" />
     <MESSAGE value="add models" />
-    <option name="LAST_COMMIT_MESSAGE" value="add models" />
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1088,7 +1119,7 @@
     <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1781">
-          <caret line="81" column="35" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
+          <caret line="79" column="35" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="35" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -1109,20 +1140,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluation/evaluation_utils.py">
+    <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="-1397">
+          <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
+    <entry file="file://$PROJECT_DIR$/evaluation_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1397">
-          <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+        <state relative-caret-position="12">
+          <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

@@ -95,13 +95,14 @@ def create_results_csv(runs_path):
     relevant_runs = []
     for run in os.listdir(runs_path):
         abs_path = os.path.join(runs_path, run)
-        if os.path.exists(os.path.join(abs_path, 'final_model')) and not os.path.exists(
-                os.path.join(abs_path, 'results.csv')):
+        if not os.path.exists(os.path.join(abs_path, 'results.csv')):
             relevant_runs.append(abs_path)
 
+    print(relevant_runs)
     with multiprocessing.Pool() as pool:
-        pool.imap(fight_checkpoints, relevant_runs)
+        pool.map(fight_checkpoints, relevant_runs)
 
+    pool.close()
     pool.join()
 
 

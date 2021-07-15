@@ -1,5 +1,4 @@
 import os
-from threading import Thread
 
 import numpy as np
 import pandas as pd
@@ -8,7 +7,6 @@ from tensorflow.keras.models import clone_model
 from tqdm import tqdm
 
 from double_dqn.experience_replay import ExperienceReplay
-from evaluation.evaluation_utils import fights
 
 
 class DQNAgent:
