@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a292041c-b5db-421e-a187-1cb45b4f5adc" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/gitignore.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/double_dqn.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluation/evalute_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/evalute_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation/evaluation_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/evaluation_utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,8 +39,8 @@
       <file leaf-file-name="evaluation_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluation/evaluation_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="16" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="16" />
+            <state>
+              <caret lean-forward="true" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -51,21 +51,11 @@
       <file leaf-file-name="evalute_model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-139">
-              <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+            <state relative-caret-position="-1397">
+              <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1626343484524" expanded="true" signature="5732:5948" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/envs/IDL/Lib/site-packages/pandas/core/indexes/base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="2896" selection-start-line="2896" selection-end-line="2896" />
             </state>
           </provider>
         </entry>
@@ -134,7 +124,6 @@
         <option value="$PROJECT_DIR$/train_jsons/fc_v5/s200_dis095_pun-10_fix.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v5/conv_s200_dis095_pun0_fix.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v5/conv_s200_dis099_pun-100_fix.json" />
-        <option value="$PROJECT_DIR$/evaluation/evaluation_utils.py" />
         <option value="$PROJECT_DIR$/double_dqn/agent.py" />
         <option value="$PROJECT_DIR$/train_jsons/params.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v6/s200_dis0999_pun-100_e7_fix.json" />
@@ -164,6 +153,7 @@
         <option value="$PROJECT_DIR$/train_jsons/fc_v8/curric_size2-4_dis0999_pun-100.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v8/curric_size_pR_dis0999_pun-100.json" />
         <option value="$PROJECT_DIR$/evaluation/evalute_model.py" />
+        <option value="$PROJECT_DIR$/evaluation/evaluation_utils.py" />
       </list>
     </option>
   </component>
@@ -209,11 +199,6 @@
             <path>
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="train_jsons" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -249,6 +234,118 @@
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\train_jsons\fc_v5" />
       <recent name="C:\Users\NADAV\.PyCharm2018.1\AI\project\train_jsons" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/double_dqn/agent.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/evaluation/evaluation_utils.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/evaluation/evalute_model.py</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -540,7 +637,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626292825629</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fix bug">
+      <created>1626356208675</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1626356208675</updated>
+    </task>
+    <task id="LOCAL-00027" summary="add models">
+      <created>1626356571063</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1626356571063</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -552,9 +663,9 @@
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.20512821" />
-      <window_info active="true" anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" visible="true" weight="0.3133903" />
+      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" weight="0.3133903" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32905984" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18053691" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18053691" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32621083" />
@@ -581,15 +692,15 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" visible="true" weight="0.25641027" />
+      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" visible="true" weight="0.3133903" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.20512821" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32621083" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3291592" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32905984" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="SciView" order="5" weight="0.13154362" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3091168" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26210827" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -621,7 +732,9 @@
     <MESSAGE value="create start_work.sh" />
     <MESSAGE value="end of day" />
     <MESSAGE value="end of day2" />
-    <option name="LAST_COMMIT_MESSAGE" value="end of day2" />
+    <MESSAGE value="fix bug" />
+    <MESSAGE value="add models" />
+    <option name="LAST_COMMIT_MESSAGE" value="add models" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -633,7 +746,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/evaluation/evalute_model.py</url>
-          <line>35</line>
+          <line>44</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
@@ -998,8 +1111,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluation/evaluation_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="16" />
+        <state>
+          <caret lean-forward="true" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -1008,11 +1121,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-139">
-          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+        <state relative-caret-position="-1397">
+          <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1626343484524" expanded="true" signature="5732:5948" ph="..." />
           </folding>
         </state>
       </provider>

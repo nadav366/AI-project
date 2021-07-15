@@ -99,8 +99,10 @@ def create_results_csv(runs_path):
                 os.path.join(abs_path, 'results.csv')):
             relevant_runs.append(abs_path)
 
-    with multiprocessing.Pool(3) as pool:
+    with multiprocessing.Pool() as pool:
         pool.imap(fight_checkpoints, relevant_runs)
+
+    pool.join()
 
 
 def read_or_create(path):
