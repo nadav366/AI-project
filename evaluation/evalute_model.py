@@ -22,14 +22,29 @@ import pandas as pd
 #     new_df1 = new_df.append(df3)
 #     plot_graph_for_all_train(new_df1)
 
+def name2step(name):
+    return int(name.replace('steps_', '').replace('.csv', ''))
 
-def plot_graph_for_all_train(dir_path):
+
+def plot_graph_for_all_train(dir_path, save_path, last_name):
     all_df_path = os.path.join(dir_path, 'df_all.csv')
     if os.path.exists(all_df_path):
         df = pd.read_csv(all_df_path)
+        if last_name is not None and last_name != '' and last_name not in df['name']:
+            step_path = os.path.join(dir_path, last_name)
+            if os.path.exists(step_path):
+                print(step_path)
+                df_name = sorted([f for f in os.listdir(step_path) if 'steps' in f], key=name2step)[-1]
+                df_path = os.path.join(step_path, df_name)
+                df_to_add = pd.read_csv(df_path)
+                df_to_add['step_index'] = df['step_index'].max() + 1
+                df_to_add['name'] = last_name
+                df_to_add.rename({'Unnamed: 0': 'step', '0': 'num_actions'}, axis=1, inplace=True)
+                df = df.append(df_to_add, ignore_index=True)
+
     else:
         try:
-            one_stage_name = sorted([f for f in os.listdir(dir_path) if 'steps' in f])[-1]
+            one_stage_name = sorted([f for f in os.listdir(dir_path) if 'steps' in f], key=name2step)[-1]
         except:
             print(dir_path)
             # shutil.rmtree(dir_path)
@@ -65,7 +80,7 @@ def plot_graph_for_all_train(dir_path):
     plt.ylabel('actions')
     plt.title(f'Model Evaluation, moving average on {N} games\n For: {os.path.basename(dir_path)}')
     # plt.legend(bbox_to_anchor=(1.05, 1), loc=0, borderaxespad=0.)
-    plt.savefig(os.path.join(dir_path, 'actions.png'))
+    plt.savefig(os.path.join(save_path, 'actions.png'))
     plt.close()
 
 
@@ -113,22 +128,30 @@ def plot_graph_for_comparing(compare_path, dir_path, name):
     plt.savefig(os.path.join(dir_path, f'{name}.png'))
     plt.close()
 
+    return name_arr.iloc[-1]
+
 
 def main(root_dir):
     for run_dir in os.listdir(root_dir):
-        if 'old' in run_dir:
-            continue
-        run_path = os.path.join(root_dir, run_dir)
+        try:
+            if 'old' in run_dir or 'plots' in run_dir:
+                continue
+            run_path = os.path.join(root_dir, run_dir)
+            run_path_to_save = os.path.join(root_dir, 'plots', run_dir)
+            os.makedirs(run_path_to_save, exist_ok=True)
+            last_name = None
+            rand_path = os.path.join(run_path, 'random.csv')
+            if os.path.exists(rand_path):
+                last_name = plot_graph_for_comparing(rand_path, dir_path=run_path_to_save, name='random')
 
-        plot_graph_for_all_train(run_path)
-        rand_path = os.path.join(run_path, 'random.csv')
-        if os.path.exists(rand_path):
-            plot_graph_for_comparing(rand_path, dir_path=run_path, name='random')
+            old_path = os.path.join(run_path, 'old.csv')
+            if os.path.exists(old_path):
+                plot_graph_for_comparing(old_path, dir_path=run_path_to_save, name='old')
 
-        old_path = os.path.join(run_path, 'old.csv')
-        if os.path.exists(old_path):
-            plot_graph_for_comparing(old_path, dir_path=run_path, name='old')
-
+            plot_graph_for_all_train(run_path, save_path=run_path_to_save, last_name=last_name)
+        except Exception as e:
+            print(run_dir, 'fail with ERROR')
+            print(e)
 
 if __name__ == '__main__':
     main(sys.argv[1])

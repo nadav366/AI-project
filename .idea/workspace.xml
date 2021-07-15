@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a292041c-b5db-421e-a187-1cb45b4f5adc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/train_jsons/fc_v8/curric_2-4fix.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_jsons/fc_v8/curric_2_2r_3_3r_4_4r.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_jsons/fc_v8/curric_2_3r_4ro.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_jsons/fc_v8/curric_2f_2r_3f_3r.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_jsons/fc_v8/curric_size2-4_fix_2-4_notfix.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train_jsons/fc_v8/curric_size23fix_4notfix.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/double_dqn/double_dqn.py" beforeDir="false" afterPath="$PROJECT_DIR$/double_dqn/double_dqn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/double_dqn/double_dqn.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluation/evalute_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/evalute_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/achtung_environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/achtung_environment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/players/player_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/players/player_factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/fc_v6/s200_dis0999_pun-100_e7_fix.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_jsons/fc_v6/s200_dis0999_pun-100_fix.json" beforeDir="false" afterPath="$PROJECT_DIR$/train_jsons/fc_v6/s200_dis095_pun-10_fix.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,96 +17,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/project$evalute_model.coverage" NAME="evalute_model Coverage Results" MODIFIED="1626291787750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$evalute_model.coverage" NAME="evalute_model Coverage Results" MODIFIED="1626340960298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1625553721595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$run_train.coverage" NAME="run_train Coverage Results" MODIFIED="1626271407332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$run_game.coverage" NAME="run_game Coverage Results" MODIFIED="1626292006478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$run_train.coverage" NAME="run_train Coverage Results" MODIFIED="1626292907231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="player_factory.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/players/player_factory.py">
+      <file leaf-file-name="agent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="curric_2size_dis0999_pun-10_fix.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_jsons/fc_v7/curric_2size_dis0999_pun-10_fix.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="100" selection-start-line="12" selection-start-column="100" selection-end-line="12" selection-end-column="100" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="curric_2-4fix.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_jsons/fc_v8/curric_2-4fix.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="curric_size23fix_4notfix.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_jsons/fc_v8/curric_size23fix_4notfix.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="curric_2_3r_4ro.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_jsons/fc_v8/curric_2_3r_4ro.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="curric_2f_2r_3f_3r.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/train_jsons/fc_v8/curric_2f_2r_3f_3r.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="curric_2_2r_3_3r_4_4r.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_jsons/fc_v8/curric_2_2r_3_3r_4_4r.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="curric_size2-4_fix_2-4_notfix.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_jsons/fc_v8/curric_size2-4_fix_2-4_notfix.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="40" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="evalute_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
+            <state relative-caret-position="-1781">
+              <caret line="81" column="35" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1626291787737" expanded="true" signature="4607:4737" ph="..." />
               </folding>
             </state>
           </provider>
@@ -125,11 +39,33 @@
       <file leaf-file-name="evaluation_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluation/evaluation_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-450">
+            <state relative-caret-position="462">
               <caret line="21" column="16" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="16" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="evalute_model.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-139">
+              <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <marker date="1626343484524" expanded="true" signature="5732:5948" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda3/envs/IDL/Lib/site-packages/pandas/core/indexes/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="2896" selection-start-line="2896" selection-end-line="2896" />
             </state>
           </provider>
         </entry>
@@ -167,6 +103,7 @@
       <find>legal_actions</find>
       <find>27</find>
       <find>curr_dir_train</find>
+      <find>text</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,7 +154,6 @@
         <option value="$PROJECT_DIR$/game/state.py" />
         <option value="$PROJECT_DIR$/game/players/player_factory.py" />
         <option value="$PROJECT_DIR$/game/achtung_environment.py" />
-        <option value="$PROJECT_DIR$/evaluation/evalute_model.py" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v8/curric_size_dis0999_pun-100_fix.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v8/curric_3size_3player_dis0999_pun-100.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v8/curric_size_playrs_dis0999_pun-100.json" />
@@ -227,6 +163,7 @@
         <option value="$PROJECT_DIR$/train_jsons/fc_v8/curric_3size_player_dis0999_pun-100.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v8/curric_size2-4_dis0999_pun-100.json" />
         <option value="$PROJECT_DIR$/train_jsons/fc_v8/curric_size_pR_dis0999_pun-100.json" />
+        <option value="$PROJECT_DIR$/evaluation/evalute_model.py" />
       </list>
     </option>
   </component>
@@ -240,10 +177,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1908" />
-    <option name="y" value="-12" />
-    <option name="width" value="1943" />
-    <option name="height" value="1053" />
+    <option name="x" value="1911" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -262,18 +199,12 @@
             <path>
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="double_dqn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="evaluation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="players" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
@@ -284,12 +215,6 @@
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="train_jsons" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="train_jsons" type="462c0819:PsiDirectoryNode" />
-              <item name="fc_v7" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
@@ -337,7 +262,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run_game">
+  <component name="RunManager" selected="Python.evalute_model">
     <configuration name="evaluation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -409,7 +334,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_train.py" />
-      <option name="PARAMETERS" value="train_jsons\params.json" />
+      <option name="PARAMETERS" value="train_jsons\fc_v8\curric_2f_2r_3f_3r.json" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -422,9 +347,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run_game" />
         <item itemvalue="Python.evalute_model" />
         <item itemvalue="Python.run_train" />
+        <item itemvalue="Python.run_game" />
         <item itemvalue="Python.evaluation" />
       </list>
     </recent_temporary>
@@ -608,7 +533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626277069779</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="end of day2">
+      <created>1626292825629</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1626292825629</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -620,16 +552,16 @@
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.20512821" />
-      <window_info anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" visible="true" weight="0.36039886" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3291592" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18053691" />
+      <window_info active="true" anchor="bottom" x="1943" y="237" width="1490" height="349" id="Run" order="2" visible="true" weight="0.3133903" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32905984" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18053691" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32621083" />
       <window_info anchor="right" id="SciView" order="5" weight="0.13154362" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39173788" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26210827" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -688,16 +620,12 @@
     <MESSAGE value="add train of features" />
     <MESSAGE value="create start_work.sh" />
     <MESSAGE value="end of day" />
-    <option name="LAST_COMMIT_MESSAGE" value="end of day" />
+    <MESSAGE value="end of day2" />
+    <option name="LAST_COMMIT_MESSAGE" value="end of day2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/double_dqn/double_dqn.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/game/players/drl_player.py</url>
           <line>21</line>
@@ -705,38 +633,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/evaluation/evalute_model.py</url>
-          <line>96</line>
-          <option name="timeStamp" value="61" />
+          <line>35</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="62" />
+      <option name="time" value="67" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/train_jsons/fc_v1/s200_dis095_exp1e6.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/fc_v1/s200_dis090_exp1e6.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_jsons/fc_v1/s300_dis095_exp1e6.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train_jsons/fc_v1/s200_dis095_exp1e5.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -864,16 +771,6 @@
           <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
           <folding>
             <element signature="e#16#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="81" column="35" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1013,27 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluation/evaluation_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1626291787737" expanded="true" signature="4607:4737" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game/players/player_factory.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
@@ -1086,10 +962,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/double_dqn/double_dqn.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/train_jsons/fc_v8/curric_2f_2r_3f_3r.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/double_dqn/agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1781">
+          <caret line="81" column="35" selection-start-line="81" selection-start-column="35" selection-end-line="81" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/IDL/Lib/site-packages/pandas/core/indexes/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="2896" selection-start-line="2896" selection-end-line="2896" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../system/python_stubs/1672923480/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="517" column="4" selection-start-line="517" selection-start-column="4" selection-end-line="517" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluation/evaluation_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluation/evalute_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-139">
+          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1626343484524" expanded="true" signature="5732:5948" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
