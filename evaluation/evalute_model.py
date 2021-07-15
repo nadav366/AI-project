@@ -1,6 +1,5 @@
 import os
 import sys
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -104,7 +103,40 @@ def plot_graph_for_comparing(compare_path, dir_path, name):
         group_last_iter += iter_num_arr[i][-1]
         if i + 1 < iter_num_arr.size:
             plt.axvline(x=group_last_iter, ls='dotted')
+    plt.ylim(0, 1)
+    plt.xlabel('num of iter')
+    plt.ylabel('win %')
 
+    plt.title(f'Compare {name} to train\n{os.path.basename(dir_path)}')
+    plt.legend(loc='upper left')
+    plt.savefig(os.path.join(dir_path, f'{name}.png'))
+    plt.close()
+
+
+def plot_compared_games(compare_path, dir_path, name):
+    df = pd.read_csv(compare_path)
+    df.reset_index(drop=True, inplace=True)
+    cp_rate = df['i'].min() + 1
+    df['name'] = df['name'].fillna('')
+    groups = df.groupby('step_index')
+    iter_num_arr = groups.i.apply(list)
+    name_arr = groups.name.unique().apply(lambda arr: arr[0])
+
+    for column in df.columns:
+        if column not in ['i', 'step_index', 'name']:
+            wins_arr = df[column]
+            group_last_iter = 0
+
+            plt.plot((np.arange(len(df)) + 1) * cp_rate, wins_arr, label=column)
+
+            props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+            for i in range(iter_num_arr.size):
+                if name_arr[i] != '':
+                    plt.text((group_last_iter + iter_num_arr[i][-1] // 3), 0.5, name_arr[i], bbox=props)
+                group_last_iter += iter_num_arr[i][-1]
+                if i + 1 < iter_num_arr.size:
+                    plt.axvline(x=group_last_iter, ls='dotted')
+    plt.ylim(0, 1)
     plt.xlabel('num of iter')
     plt.ylabel('win %')
 
@@ -116,18 +148,13 @@ def plot_graph_for_comparing(compare_path, dir_path, name):
 
 def main(root_dir):
     for run_dir in os.listdir(root_dir):
-        if 'old' in run_dir:
-            continue
         run_path = os.path.join(root_dir, run_dir)
 
         plot_graph_for_all_train(run_path)
-        rand_path = os.path.join(run_path, 'random.csv')
-        if os.path.exists(rand_path):
-            plot_graph_for_comparing(rand_path, dir_path=run_path, name='random')
 
-        old_path = os.path.join(run_path, 'old.csv')
-        if os.path.exists(old_path):
-            plot_graph_for_comparing(old_path, dir_path=run_path, name='old')
+        results_path = os.path.join(run_path, 'results.csv')
+        if os.path.exists(results_path):
+            plot_compared_games(results_path, dir_path=run_path, name='result')
 
 
 if __name__ == '__main__':
