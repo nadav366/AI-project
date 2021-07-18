@@ -1,0 +1,19 @@
+{
+  "name": "3sf-r_ro_oo_ooo",
+  "model_type": "fc",
+  "fc_sizes": [64,32,32,16],
+  "dropout": 0,
+  "exploration_decay": 1e-6,
+  "state_size": 32,
+  "discount": 0.999,
+  "punishment": -10,
+  "checkpoint_rate": 300,
+  "train_plan": [
+    {"players": [], "num_of_games": 1500,"arena_size": 300, "first_not_random": true, "des": "s3f"},
+    {"players": ["r"], "num_of_games": 1500,"arena_size": 300, "first_not_random": true, "des": "s3f_r"},
+    {"players": ["r","old"], "num_of_games": 1500,"arena_size": 300, "first_not_random": true, "des": "s3f_ro"},
+    {"players": ["old","old"], "num_of_games": 1500,"arena_size": 300, "first_not_random": true, "des": "s3f_oo"},
+    {"players": ["old","old","old"], "num_of_games": 1500,"arena_size": 300, "first_not_random": true, "des": "s3f_ooo"}
+  ]
+}
+

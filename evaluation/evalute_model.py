@@ -6,22 +6,6 @@ import numpy as np
 import pandas as pd
 
 
-# def read_all_file():
-#     df = pd.read_csv(ALL_CSV, sep=',')
-#     df.reset_index(drop=True, inplace=True)
-#     # index, name, num_actions, step, step_index = df.columns.tolist()
-#     index, name, num_actions, step = df.columns.tolist()
-#     df['step_index'] = 1
-#     df2 = df.copy()
-#     df2['step_index'] = 2
-#     df2[name] = 'with_players'
-#     new_df = df.append(df2)
-#     df3 = new_df.copy()
-#     df3['step_index'] = 3
-#     df3[name] = 'with_players_1'
-#     new_df1 = new_df.append(df3)
-#     plot_graph_for_all_train(new_df1)
-
 def name2step(name):
     return int(name.replace('steps_', '').replace('.csv', ''))
 
@@ -33,7 +17,7 @@ def plot_graph_for_all_train(dir_path, save_path, last_name):
         if last_name is not None and last_name != '' and last_name not in df['name']:
             step_path = os.path.join(dir_path, last_name)
             if os.path.exists(step_path):
-                print(step_path)
+                # print(step_path)
                 df_name = sorted([f for f in os.listdir(step_path) if 'steps' in f], key=name2step)[-1]
                 df_path = os.path.join(step_path, df_name)
                 df_to_add = pd.read_csv(df_path)
@@ -66,14 +50,14 @@ def plot_graph_for_all_train(dir_path, save_path, last_name):
     y_all = np.convolve(df.num_actions, np.ones((N,)) / N, mode='valid')
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 
-    for i in range(0, steps_arr.size):
+    for i in name_arr.index:
         y_smooth = np.convolve(num_actions_arr[i], np.ones((N,)) / N, mode='valid')
         x_vals = last_step_len + (np.arange(len(y_smooth)) + N // 2)
         plt.plot(x_vals, y_smooth, label=name_arr[i][0])
         y_pos = get_y_text_pos(y_all, y_smooth)
         plt.text((last_step_len + x_vals.mean()) // 2, y_pos, name_arr[i][0], bbox=props)
         last_step_len += len(num_actions_arr[i])
-        if i + 1 != steps_arr.size:
+        if i < name_arr.index.max():
             plt.axvline(x=last_step_len, ls='dotted')
 
     plt.xlabel('steps')
@@ -106,58 +90,61 @@ def plot_graph_for_comparing(compare_path, dir_path, name):
     name_arr = groups.name.unique().apply(lambda arr: arr[0])
 
     player_1_wins_arr = df['train_model']
-    player_2_wins_arr = df['ref_model']
     group_last_iter = 0
-
     plt.plot((np.arange(len(df)) + 1) * cp_rate, player_1_wins_arr, label="train_model")
-    # plt.plot((np.arange(len(df)) + 1) * cp_rate, player_2_wins_arr, label=f'{name}_model', ls='dashed')
-
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-    for i in range(iter_num_arr.size):
+    for i in name_arr.index:
         if name_arr[i] != '':
             plt.text((group_last_iter + iter_num_arr[i][-1] // 3), 0.5, name_arr[i], bbox=props)
         group_last_iter += iter_num_arr[i][-1]
-        if i + 1 < iter_num_arr.size:
+        if i < name_arr.index.max():
             plt.axvline(x=group_last_iter, ls='dotted')
     plt.ylim(0, 1)
     plt.xlabel('num of iter')
     plt.ylabel('win %')
 
     plt.title(f'Compare {name} to train\n{os.path.basename(dir_path)}')
-    plt.legend(loc='upper left')
+    plt.legend(loc='upper right')
     plt.savefig(os.path.join(dir_path, f'{name}.png'))
     plt.close()
+
+    return name_arr.iloc[-1]
 
 
 def plot_compared_games(compare_path, dir_path, name):
     df = pd.read_csv(compare_path)
+    keep_inx = df[['i', 'name']].drop_duplicates(keep='last').index
+    df = df.loc[keep_inx]
+
     df.reset_index(drop=True, inplace=True)
     cp_rate = df['i'].min() + 1
     df['name'] = df['name'].fillna('')
     groups = df.groupby('step_index')
     iter_num_arr = groups.i.apply(list)
     name_arr = groups.name.unique().apply(lambda arr: arr[0])
+    N = 2
 
     for column in df.columns:
         if column not in ['i', 'step_index', 'name']:
             wins_arr = df[column]
             group_last_iter = 0
 
-            plt.plot((np.arange(len(df)) + 1) * cp_rate, wins_arr, label=column)
+            curr_wins_arr = np.convolve(wins_arr, np.ones((N,)) / N, mode='valid')
+            plt.plot((np.arange(len(curr_wins_arr)) + 2) * cp_rate, curr_wins_arr, label=column)
 
             props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-            for i in range(iter_num_arr.size):
+            for i in name_arr.index:
                 if name_arr[i] != '':
                     plt.text((group_last_iter + iter_num_arr[i][-1] // 3), 0.5, name_arr[i], bbox=props)
                 group_last_iter += iter_num_arr[i][-1]
-                if i + 1 < iter_num_arr.size:
+                if i < name_arr.index.max():
                     plt.axvline(x=group_last_iter, ls='dotted')
     plt.ylim(0, 1)
     plt.xlabel('num of iter')
     plt.ylabel('win %')
 
     plt.title(f'Compare {name} to train\n{os.path.basename(dir_path)}')
-    plt.legend(loc='upper left')
+    plt.legend(loc='lower right')
     plt.savefig(os.path.join(dir_path, f'{name}.png'))
     plt.close()
 
@@ -166,14 +153,31 @@ def plot_compared_games(compare_path, dir_path, name):
 
 def main(root_dir):
     for run_dir in os.listdir(root_dir):
+        if 'plots' in run_dir:
+            continue
         run_path = os.path.join(root_dir, run_dir)
         run_path_to_save = os.path.join(root_dir, 'plots', run_dir)
+        # run_path_to_save = os.path.join(root_dir, run_dir)
+        os.makedirs(run_path_to_save, exist_ok=True)
 
         last_name = None
-        results_path = os.path.join(run_path_to_save, 'results.csv')
+        results_path = os.path.join(run_path, 'results_v4.csv')
         if os.path.exists(results_path):
-            last_name = plot_compared_games(results_path, dir_path=run_path, name='result')
-        plot_graph_for_all_train(run_path, save_path=run_path_to_save, last_name=last_name)
+            plot_compared_games(results_path, dir_path=run_path_to_save, name='result')
+
+        rand_path = os.path.join(run_path, 'random.csv')
+        if os.path.exists(rand_path):
+            last_name = plot_graph_for_comparing(rand_path, dir_path=run_path_to_save, name='random')
+
+        old_path = os.path.join(run_path, 'old.csv')
+        if os.path.exists(old_path):
+            last_name = plot_graph_for_comparing(old_path, dir_path=run_path_to_save, name='old')
+
+        try:
+            plot_graph_for_all_train(run_path, save_path=run_path_to_save, last_name=last_name)
+        except:
+            print(f'ERROR: {run_dir}')
+            continue
 
 
 if __name__ == '__main__':

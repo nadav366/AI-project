@@ -5,6 +5,9 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.keras.models import clone_model
 from tqdm import tqdm
+from multiprocessing import Process
+
+from evaluation_utils import fights
 
 from double_dqn.experience_replay import ExperienceReplay
 
@@ -105,6 +108,8 @@ class DQNAgent:
             if self.exp_rep.get_num() > self.batch_size:
                 if (i % checkpoint_rate) == checkpoint_rate - 1:
                     save_path = self.save_data_of_cp(num_actions, step_name, train_dir, i)
+                    # fighet_process = Process(target=fights, args=(i, save_path, step_name, train_dir, step_index))
+                    # fighet_process.run()
             with open(os.path.join(train_dir, 'exploration_rate.txt'), 'a') as exp_rate:
                 exp_rate.writelines([str(exploration_rate) + '\n'])
 
@@ -161,14 +166,15 @@ class DQNAgent:
         # actions using the target net
         max_actions = np.argmax(q, axis=-1)
         estimated_values = t[np.arange(t.shape[0]), max_actions]
-        targets[non_terminal_mask, actions[non_terminal_mask]] = self.discount * estimated_values + 1
+        targets[non_terminal_mask, actions[non_terminal_mask]] = \
+            self.discount * estimated_values + 1 + (actions[non_terminal_mask] == 2).astype(int)
 
         # At this point the target is similar to the q-net prediction, except in the index corresponding to action
         # taken. In this index, the target value is just the reward if state is terminal, otherwise it is
         # reward + discount * Q(next_state, action), where Q(next_state, action) is evaluated using the Double
         # Q-learning algorithm. that is Q(next_state, action) = t_net(next_state)[argmax(q_net(next_state))]
 
-        self.q_net.fit(states, targets, epochs=5, verbose=0, batch_size=self.batch_size)
+        self.q_net.fit(states, targets, epochs=5, verbose=0, batch_size=self.batch_size, )
 
     def set_model(self, model):
         self.q_net = model

@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     curr_dir_train = getattr(params, 'curr_dir_train', None)
     if curr_dir_train is None:
-        dir_train = os.path.join('run_trains', f"{params.model_type}_{params.name}_{time}")
+        dir_train = os.path.join('run_trains_v3', f"{params.model_type}_{params.name}_{time}")
         os.makedirs(dir_train)
         model, extract_features = get_model(params)
         exploration_rate = 1
