@@ -73,7 +73,7 @@ class State:
         self._rgb_board[self.margin:self.margin + self.arena_size, self.margin:self.margin + self.arena_size, ...] = BLACK
         self._board[: self.arena_size, : self.arena_size] = BLACK_2D
 
-    def adjust_to_drl_player(self, player_id, state_size=32, debug=False):
+    def adjust_to_drl_player(self, player_id, state_size=32, debug=True):
         if self.extract_features[player_id]:
             max_distance = 350
             num_angles = 25
@@ -114,12 +114,14 @@ class State:
 
             if debug:
                 fig = plt.figure(figsize=(9, 3))
-                fig, ax1, ax2, ax3 = fig.subplots(1, 3, figsize=(9, 3))
+                ax1, ax2, ax3 = fig.subplots(1, 3)
                 ax1.imshow(self._rgb_board)
-                ax1.set_title()
+                ax1.set_title('Original Board')
                 ax2.imshow(rotated_bord, cmap='gray')
                 ax2.scatter(x_head_new, y_head_new)
+                ax2.set_title('Rotated Board')
                 ax3.imshow(croped_state, cmap='gray')
+                ax3.set_title('Cropped State')
                 plt.show()
             return np.expand_dims(croped_state, axis=-1)
 
