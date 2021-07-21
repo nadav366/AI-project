@@ -12,9 +12,9 @@ def name2step(name):
     return int(name.replace('model_', '').replace('.csv', ''))
 
 
-def one_fight(players: list, num_of_fights=40):
+def one_fight(players: list, num_of_fights=50, arena_size=400):
     num_of_win = dict.fromkeys(range(len(players)), 0)
-    env = TrainingEnv(players, training_mode=True, arena_size=400)
+    env = TrainingEnv(players, training_mode=True, arena_size=arena_size)
     for _ in range(num_of_fights):
         env.reset()
         winner_idx = env.loop()
@@ -38,7 +38,7 @@ def fights(i, save_path, step_name, train_dir, step_index):
         game_result = one_fight([save_path] + players)
         result_dict[run] = game_result[0]
 
-    rand_csv_path = os.path.join(train_dir, 'results_v4.csv')
+    rand_csv_path = os.path.join(train_dir, 'results_s200.csv')
     df = read_or_create(rand_csv_path)
     df = df.append(result_dict, ignore_index=True)
     df.to_csv(rand_csv_path, index=False)

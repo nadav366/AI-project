@@ -1,4 +1,3 @@
-import abc
 import copy
 
 import matplotlib.pyplot as plt
@@ -114,17 +113,15 @@ class State:
             croped_state = rotated_bord[y_top:y_bot, x_left:x_right]
 
             if debug:
-                fig = plt.figure(figsize=(6, 3))
-                ax1, ax2 = fig.subplots(1, 2)
-                ax1.imshow(rotated_bord, cmap='gray')
-                ax1.scatter(x_head_new, y_head_new)
-                ax2.imshow(croped_state, cmap='gray')
+                fig = plt.figure(figsize=(9, 3))
+                fig, ax1, ax2, ax3 = fig.subplots(1, 3, figsize=(9, 3))
+                ax1.imshow(self._rgb_board)
+                ax1.set_title()
+                ax2.imshow(rotated_bord, cmap='gray')
+                ax2.scatter(x_head_new, y_head_new)
+                ax3.imshow(croped_state, cmap='gray')
                 plt.show()
             return np.expand_dims(croped_state, axis=-1)
-
-    @abc.abstractmethod
-    def update_player_graphics(self, player_id):
-        raise NotImplementedError('Please implement this method')
 
     @classmethod
     def from_state(cls, other, *args, **kwargs):

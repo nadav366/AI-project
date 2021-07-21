@@ -1,0 +1,15 @@
+{
+  "name": "s200",
+  "model_type": "conv",
+  "conv_filters": [16,32],
+  "fc_sizes": [64,32],
+  "dropout": 0.4,
+  "exploration_decay": 1e-6,
+  "state_size": 32,
+  "discount": 0.999,
+  "checkpoint_rate": 300,
+  "punishment": -10,
+  "train_plan": [
+    {"players": [], "num_of_games": 10000, "arena_size": 200, "first_not_random": true, "des": "s200"}
+  ]
+}

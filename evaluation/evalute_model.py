@@ -5,12 +5,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+fontsize = 17
+
 
 def name2step(name):
     return int(name.replace('steps_', '').replace('.csv', ''))
 
 
-def plot_graph_for_all_train(dir_path, save_path, last_name):
+def plot_graph_for_all_train(dir_path, last_name, ax):
     all_df_path = os.path.join(dir_path, 'df_all.csv')
     if os.path.exists(all_df_path):
         df = pd.read_csv(all_df_path)
@@ -25,7 +27,6 @@ def plot_graph_for_all_train(dir_path, save_path, last_name):
                 df_to_add['name'] = last_name
                 df_to_add.rename({'Unnamed: 0': 'step', '0': 'num_actions'}, axis=1, inplace=True)
                 df = df.append(df_to_add, ignore_index=True)
-
     else:
         try:
             one_stage_name = sorted([f for f in os.listdir(dir_path) if 'steps' in f], key=name2step)[-1]
@@ -39,33 +40,29 @@ def plot_graph_for_all_train(dir_path, save_path, last_name):
         df['name'] = os.path.basename(dir_path)
         df.rename({'Unnamed: 0': 'step', '0': 'num_actions'}, axis=1, inplace=True)
 
-    plt.figure(figsize=(max(4, 4 * len(df) / 1000), 4))
+    df['name'] = df['name'].fillna('')
     df.reset_index(drop=True, inplace=True)
     groups = df.groupby('step_index')
     num_actions_arr = groups.num_actions.apply(list)
-    name_arr = groups.name.unique()
-    steps_arr = groups.step.apply(list)
+    name_arr = groups.name.unique().apply(lambda arr: arr[0])
     N = 100
     last_step_len = 0
     y_all = np.convolve(df.num_actions, np.ones((N,)) / N, mode='valid')
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-
     for i in name_arr.index:
         y_smooth = np.convolve(num_actions_arr[i], np.ones((N,)) / N, mode='valid')
         x_vals = last_step_len + (np.arange(len(y_smooth)) + N // 2)
-        plt.plot(x_vals, y_smooth, label=name_arr[i][0])
-        y_pos = get_y_text_pos(y_all, y_smooth)
-        plt.text((last_step_len + x_vals.mean()) // 2, y_pos, name_arr[i][0], bbox=props)
+        plt.plot(x_vals, y_smooth, label=name_arr[i])
+        if name_arr[i] != '':
+            y_pos = get_y_text_pos(y_all, y_smooth)
+            plt.text((last_step_len + x_vals.mean()) // 2, y_pos, name_arr[i], bbox=props)
         last_step_len += len(num_actions_arr[i])
         if i < name_arr.index.max():
             plt.axvline(x=last_step_len, ls='dotted')
 
-    plt.xlabel('steps')
-    plt.ylabel('actions')
-    plt.title(f'Model Evaluation, moving average on {N} games\n For: {os.path.basename(dir_path)}')
-    # plt.legend(bbox_to_anchor=(1.05, 1), loc=0, borderaxespad=0.)
-    plt.savefig(os.path.join(save_path, 'actions.png'))
-    plt.close()
+    ax.set_xlabel('Games', fontsize=fontsize)
+    ax.set_ylabel('Score (Number of steps)', fontsize=fontsize)
+    ax.set_title(f'Model Evaluation, moving average on {N} games', fontsize=fontsize)
 
 
 def get_y_text_pos(y_all, y_smooth):
@@ -80,38 +77,7 @@ def get_y_text_pos(y_all, y_smooth):
     return y_pos
 
 
-def plot_graph_for_comparing(compare_path, dir_path, name):
-    df = pd.read_csv(compare_path)
-    df.reset_index(drop=True, inplace=True)
-    cp_rate = df['i'].min() + 1
-    df['name'] = df['name'].fillna('')
-    groups = df.groupby('step_index')
-    iter_num_arr = groups.i.apply(list)
-    name_arr = groups.name.unique().apply(lambda arr: arr[0])
-
-    player_1_wins_arr = df['train_model']
-    group_last_iter = 0
-    plt.plot((np.arange(len(df)) + 1) * cp_rate, player_1_wins_arr, label="train_model")
-    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-    for i in name_arr.index:
-        if name_arr[i] != '':
-            plt.text((group_last_iter + iter_num_arr[i][-1] // 3), 0.5, name_arr[i], bbox=props)
-        group_last_iter += iter_num_arr[i][-1]
-        if i < name_arr.index.max():
-            plt.axvline(x=group_last_iter, ls='dotted')
-    plt.ylim(0, 1)
-    plt.xlabel('num of iter')
-    plt.ylabel('win %')
-
-    plt.title(f'Compare {name} to train\n{os.path.basename(dir_path)}')
-    plt.legend(loc='upper right')
-    plt.savefig(os.path.join(dir_path, f'{name}.png'))
-    plt.close()
-
-    return name_arr.iloc[-1]
-
-
-def plot_compared_games(compare_path, dir_path, name):
+def plot_compared_games(compare_path, ax):
     df = pd.read_csv(compare_path)
     keep_inx = df[['i', 'name']].drop_duplicates(keep='last').index
     df = df.loc[keep_inx]
@@ -130,23 +96,21 @@ def plot_compared_games(compare_path, dir_path, name):
             group_last_iter = 0
 
             curr_wins_arr = np.convolve(wins_arr, np.ones((N,)) / N, mode='valid')
-            plt.plot((np.arange(len(curr_wins_arr)) + 2) * cp_rate, curr_wins_arr, label=column)
+            ax.plot((np.arange(len(curr_wins_arr)) + 2) * cp_rate, curr_wins_arr, label=column)
 
             props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
             for i in name_arr.index:
                 if name_arr[i] != '':
-                    plt.text((group_last_iter + iter_num_arr[i][-1] // 3), 0.5, name_arr[i], bbox=props)
+                    ax.text((group_last_iter + iter_num_arr[i][-1] // 3), 0.2, name_arr[i], bbox=props)
                 group_last_iter += iter_num_arr[i][-1]
                 if i < name_arr.index.max():
-                    plt.axvline(x=group_last_iter, ls='dotted')
-    plt.ylim(0, 1)
-    plt.xlabel('num of iter')
-    plt.ylabel('win %')
+                    ax.axvline(x=group_last_iter, ls='dotted')
+    ax.set_ylim(0, 1)
+    ax.set_xlabel('Games', fontsize=fontsize)
+    ax.set_ylabel('Win Rate', fontsize=fontsize)
 
-    plt.title(f'Compare {name} to train\n{os.path.basename(dir_path)}')
-    plt.legend(loc='lower right')
-    plt.savefig(os.path.join(dir_path, f'{name}.png'))
-    plt.close()
+    ax.set_title(f'Win rate of agent compared to the listed tasks', fontsize=fontsize)
+    ax.legend()
 
     return name_arr.iloc[-1]
 
@@ -156,28 +120,20 @@ def main(root_dir):
         if 'plots' in run_dir:
             continue
         run_path = os.path.join(root_dir, run_dir)
-        run_path_to_save = os.path.join(root_dir, 'plots', run_dir)
-        # run_path_to_save = os.path.join(root_dir, run_dir)
+        # run_path_to_save = os.path.join(root_dir, 'plots', run_dir)
+        run_path_to_save = os.path.join(root_dir, run_dir)
         os.makedirs(run_path_to_save, exist_ok=True)
+        fog, axs = plt.subplots(1, 2, figsize=(15, 5))
 
         last_name = None
         results_path = os.path.join(run_path, 'results_v4.csv')
         if os.path.exists(results_path):
-            plot_compared_games(results_path, dir_path=run_path_to_save, name='result')
+            last_name = plot_compared_games(results_path, ax=axs[0])
 
-        rand_path = os.path.join(run_path, 'random.csv')
-        if os.path.exists(rand_path):
-            last_name = plot_graph_for_comparing(rand_path, dir_path=run_path_to_save, name='random')
+        plot_graph_for_all_train(run_path, last_name=last_name, ax=axs[1])
 
-        old_path = os.path.join(run_path, 'old.csv')
-        if os.path.exists(old_path):
-            last_name = plot_graph_for_comparing(old_path, dir_path=run_path_to_save, name='old')
-
-        try:
-            plot_graph_for_all_train(run_path, save_path=run_path_to_save, last_name=last_name)
-        except:
-            print(f'ERROR: {run_dir}')
-            continue
+        plt.suptitle(f'{os.path.basename(run_path)}', fontsize=fontsize)
+        plt.savefig(os.path.join(run_path_to_save, 'all_res.png'))
 
 
 if __name__ == '__main__':
